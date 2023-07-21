@@ -1,0 +1,41 @@
+﻿ 
+@{
+    ViewData["Title"] = "Ayakkabilar";
+}
+
+<h1>Ayakkabilar</h1>
+
+<style>
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+    }
+</style>
+<table class="table table-striped">
+    <thead>
+    <th>Görsel</th>
+    <th>Ürün Adı</th>
+    <th>Stok</th>
+    <th>Fiyat</th>
+    <th>Açıklama</th>
+    </thead>
+    <tbody>
+        @foreach (var urun in ViewBag.Products as List<Product>)
+        {
+            <tr>
+                <td width="200px" height="200px">
+
+                    <img src="@urun.ImageUrl" />
+                </td>
+
+                <td>@urun.ProductName</td>
+                <td>@urun.Quantity</td>
+                <td>@urun.Price</td>  
+                <td>@urun.Description</td>
+                 
+            </tr>
+        }
+    </tbody>
+</table>

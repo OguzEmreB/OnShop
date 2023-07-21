@@ -1,0 +1,92 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin: 0;
+    background: #FFECB3
+}
+
+#anagovde {
+    border: 0px solid;
+    max-width: 1200px;
+    //padding-left: 50px;
+    //padding-right: 50px;
+    margin: auto;
+    display: block;
+    overflow-x: hidden;
+    background-color: #FFFFCC;
+}
+
+#menu {
+    //sabit üst menü top: 0px;
+    position: fixed;
+    background-color: #F7ECA4;
+    width: 1200px;
+    z-index: 1;
+    text-align: center;
+    display: block;
+    height: 50px;
+}
+
+.sol {
+    float: left;
+    width: 200px;
+    text-align: center;
+    background-color: #D5CFA7;
+    height: 50px;
+}
+
+.orta {
+    list-style: none;
+    float: left;
+    width: 800px;
+    text-align: center;
+    background-color: #FFCCCC;
+    height: 50px;
+}
+
+.ortaMenu li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.sag {
+    float: left;
+    width: 200px;
+    text-align: center;
+    background-color: #CCCCFF;
+    height: 50px;
+}
+
+#icerik {
+    min-height: 760px;
+    width: 100%;
+    overflow-x: hidden;
+    //clear: both;
+    //border: 1px solid;
+    margin-top: 50px;
+    background-color: #E5FFCC;
+    height: auto;
+}
+
+.post {
+    margin-bottom: 20px;
+    width: 100%;
+    //border: 1px solid;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #CCE5FF;
+}
+
+
+#footer {
+    //layout'da ' body altýna taþýndý bottom: 0px;
+    //position: relative;
+    // position: fixed;
+    background-color: #FFCCE5;
+    margin: auto;
+    width: 1200px;
+    height: 45px;
+    z-index: 1;
+    text-align: center;
+    display: block;
+}

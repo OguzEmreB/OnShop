@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Üst Sabit Menü2</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link href="~/css/_homelayout.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="anagovde">
+        <div id="menu">
+            <div class="sol" ">	 <h3 style="padding:7px;font-family: Arial Black;">
+
+                <a href="/Home/Index">OnShop</a></h3>
+
+            </div>
+
+
+
+            <div class="orta">
+                <ul class="ortaMenu">
+
+                   
+                    <li><a href="/Home/Ayakkabilar">Ayakkabı</a></li>
+                    <li><a href="/Home/Tshirt">Tshirt</a></li>
+                </ul>
+
+            </div>
+
+
+            <div class="sag">	
+
+             sag
+            
+            </div>
+
+        </div>
+
+        <div id="icerik">
+            <div class="post">
+
+                @RenderBody()
+
+            </div>
+
+
+        </div>
+        <div id="footer">Sabit Dip</div>
+    </div>
+
+    <script src:"~/lib/jquery/dist/jquery.min.js"></script>
+    <script src:"~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
