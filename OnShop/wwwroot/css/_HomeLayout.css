@@ -1,5 +1,5 @@
 body {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-family: Toboto,sans-serif;
     font-size: 13px;
     margin: 0;
     background: #FFECB3
@@ -50,9 +50,9 @@ body {
 }
 
 .sag {
-    float: left;
+    float: right;
     width: 200px;
-    text-align: center;
+    text-align: right;
     background-color: #CCCCFF;
     height: 50px;
 }
