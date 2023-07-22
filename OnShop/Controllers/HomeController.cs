@@ -28,7 +28,7 @@ namespace OnShop.Controllers
             return View();
         }
 
-    
+        [Authorize]
         public IActionResult Ayakkabilar()
         {
 
@@ -36,6 +36,7 @@ namespace OnShop.Controllers
 
             return View();
         }
+        [Authorize]
         public IActionResult Tshirt()
         {
             ViewBag.Products = _context.Products.Where(x => x.CategoryId == 2).ToList();
