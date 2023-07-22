@@ -2,7 +2,7 @@ body {
     font-family: Toboto,sans-serif;
     font-size: 13px;
     margin: 0;
-    background: #FFECB3
+    background: #FFF;
 }
 
 #anagovde {
@@ -13,13 +13,13 @@ body {
     margin: auto;
     display: block;
     overflow-x: hidden;
-    background-color: #FFFFCC;
+    background-color: #FFF;
 }
 
 #menu {
     //sabit üst menü top: 0px;
     position: fixed;
-    background-color: #F7ECA4;
+    background-color: #FFF;
     width: 1200px;
     z-index: 1;
     text-align: center;
@@ -31,7 +31,7 @@ body {
     float: left;
     width: 200px;
     text-align: center;
-    background-color: #D5CFA7;
+    background-color: #CCE5FF;
     height: 50px;
 }
 
@@ -40,7 +40,7 @@ body {
     float: left;
     width: 800px;
     text-align: center;
-    background-color: #FFCCCC;
+    background-color: #FFF;
     height: 50px;
 }
 
@@ -53,7 +53,7 @@ body {
     float: right;
     width: 200px;
     text-align: right;
-    background-color: #CCCCFF;
+    background-color: #CCE5FF;
     height: 50px;
 }
 
@@ -64,7 +64,7 @@ body {
     //clear: both;
     //border: 1px solid;
     margin-top: 50px;
-    background-color: #E5FFCC;
+    background-color: #FFF; /*#E5FFCC;*/
     height: auto;
 }
 
