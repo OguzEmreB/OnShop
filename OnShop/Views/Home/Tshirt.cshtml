@@ -5,39 +5,49 @@
 <h1>Tshirtler</h1>
 
 <style>
+    .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-    table, th, td {
+    .product-item {
+        width: 200px;
+        height: 400px;
         border: 1px solid black;
-        border-collapse: collapse;
-        padding:10px;
+        padding: 10px;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .product-image {
+        max-width: 100%;
+        max-height: 200px;
+    }
+
+    .product-details {
+        text-align: center;
+    }
+
+    table {
+        display: none;
     }
 </style>
-<table class="table table-striped">
-    <thead>
-    <th>Görsel</th>
-    <th>Ürün Adı</th>
-    <th>Stok</th>
-    <th>Fiyat</th>
-    <th>Açıklama</th>
-    </thead>
-    <tbody>
-        @foreach (var urun in ViewBag.Products as List<Product>)
-        {
-            <tr >
-                <td width="200px" height="200px">
 
-                    <img src="@urun.ImageUrl" />
-                </td>
+<div class="product-grid">
+    @foreach (var urun in ViewBag.Products as List<Product>)
+    {
+        <div class="product-item">
+            <img class="product-image" src="@urun.ImageUrl" alt="@urun.ProductName" />
 
-                <td>@urun.ProductName</td>
-                <td>@urun.Quantity</td>
-                <td>@urun.Price</td>
-                <td>@urun.Description</td>
-               
-              
+            <div class="product-details">
+                <h3>@urun.ProductName</h3>
+                <p>Stok: @urun.Quantity</p>
+                <p>Fiyat: @urun.Price</p>
+                <p>Açıklama: @urun.Description</p>
+            </div>
 
-            
-            </tr>
-        }
-    </tbody>
-</table>
+        </div>
+    }
+</div>
