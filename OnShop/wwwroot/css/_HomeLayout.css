@@ -24,7 +24,7 @@ body {
     z-index: 1;
     text-align: center;
     display: block;
-    height: 50px;
+    height: 70px;
 }
 
 .sol {
@@ -32,7 +32,7 @@ body {
     width: 200px;
     text-align: center;
     background-color: #CCE5FF;
-    height: 50px;
+    height: 100%;
 }
 
 .orta {
@@ -41,7 +41,7 @@ body {
     width: 800px;
     text-align: center;
     background-color: #FFF;
-    height: 50px;
+    height: 100%;
 }
 
 .ortaMenu li {
@@ -54,7 +54,7 @@ body {
     width: 200px;
     text-align: right;
     background-color: #CCE5FF;
-    height: 50px;
+    height: 100%;
 }
 
 #icerik {
@@ -63,7 +63,7 @@ body {
     overflow-x: hidden;
     //clear: both;
     //border: 1px solid;
-    margin-top: 50px;
+    margin-top: 75px;
     background-color: #FFF; /*#E5FFCC;*/
     height: auto;
 }
