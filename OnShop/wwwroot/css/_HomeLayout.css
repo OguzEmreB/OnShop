@@ -29,7 +29,7 @@ body {
 
 .sol {
     text-align: center;
-    background-color: #1c2937; /* Amazon'un üst bar rengi */
+    background-color: #1c2937;  
     width: 200px;
     height: 70px;
     display: flex;
@@ -40,7 +40,7 @@ body {
         margin: 0;
         padding: 7px;
         font-family: Arial Black;
-        color: #ff6a00; /* Change the text color to orange (#ff6a00) */
+        color: #ff6a00; 
         font-size: 24px;
         text-transform: uppercase;
     }
@@ -51,14 +51,14 @@ body {
     background-color: #1c2937;
     flex: 1;
     display: flex;
-    justify-content: space-between; /* Align items with space between them */
-    align-items: center; /* Center the .user-container vertically within .orta */
+    justify-content: space-between; 
+    align-items: center;  
 }
 .search-container{
    
 }
 .search-container input {
-    width: 300px; /* Set the width of the input to 300 pixels */
+    width: 300px;  
     padding: 5px;
 }
 .user-container {
@@ -80,8 +80,8 @@ body {
 
 
 .menu {
-    /* Add a margin-top to push it below the top-bar */
-    margin-top: 70px; /* Same height as the top-bar */
+   
+    margin-top: 70px; 
     position: fixed;
     top: 0;
     left: 0;
@@ -96,23 +96,23 @@ body {
       
     flex: 1;
     display: flex;
-    justify-content: space-between; /* Align items with space between them */ 
-    align-items: center; /* Center the .user-container vertically within .orta */
+    justify-content: space-between;  
+    align-items: center;  
     height: 45px;
     list-style: none;
-    background-color: #0f161e; /* Amazon'un üst bar rengi   #232f3e; */
+    background-color: #0f161e; 
    
 }
 .ortaMenu {
-    position: relative; /* Add relative positioning to the ortaMenu */
+    position: relative;  
    
 }
-    /*   #1c252f;   #17212c;   #0f161e; */
+   
     .ortaMenu li {
         top: 5px;
         color: #0f161e;
         display: inline-block;
-        margin: 5px 5px 0; /* Adjust the top margin to create space below the menu items */
+        margin: 5px 5px 0; 
     }
 
         .ortaMenu li a {
@@ -125,19 +125,19 @@ body {
         }
 
         .ortaMenu li .dropdown-menu {
-            display: none; /* Hide the dropdown menu by default */
+            display: none; 
             background-color: #0f161e;
             list-style: none;
             padding: 0;
             width: 600px;
-            margin: 0px 0px 0; /* Adjust the top margin to create space below the menu items */
+            margin: 0px 0px 0;  
         }
 
             .ortaMenu li .dropdown-menu li {
-                display: block; /* Make the submenu items appear below each other */
+                display: block;  
             }
 
-        /* Show the dropdown menu when the parent menu item is hovered */
+      
         .ortaMenu li:hover .dropdown-menu {
             display: block;
         }
@@ -151,7 +151,7 @@ body {
     float: right;
     margin-right: 5px;
     height: 100%;
-    line-height: 50px; /* Adjust the line-height to vertically center the text */
+    line-height: 50px;  
 }
 
 
@@ -159,7 +159,7 @@ body {
     
         color: #0f161e;
         display: block;
-        margin: 0px 0px 0; /* Adjust the top margin to create space below the menu items */
+        margin: 0px 0px 0;  
     }
 
 .menu .cart-container li a {
@@ -175,7 +175,7 @@ body {
 }
 
         .menu .cart-container li .dropdown-menu {
-            display: none; /* Hide the dropdown menu by default */
+            display: none;  
             background-color: #0f161e;
             list-style: none;
        

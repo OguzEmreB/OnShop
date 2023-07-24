@@ -6,7 +6,7 @@ using OnShop.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+ 
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<OnShopContext>(option => option.UseSqlServer(
@@ -33,7 +33,7 @@ builder.Services.AddRazorPages();
 var app = builder.Build();
 
 
-// Configure the HTTP request pipeline.
+ 
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

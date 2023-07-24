@@ -7,7 +7,7 @@ public class ShoppingCart
     [Key]
     public int ShoppingCartId { get; set; }
 
-    // ForeignKey ile Products tablosuna referans yapalım
+ 
     [ForeignKey("ProductId")]
     public string ProductId { get; set; }
     
@@ -19,5 +19,5 @@ public class ShoppingCart
 
     public ApplicationUser ApplicationUser { get; set; }
 
-    // Diğer özellikler...
+   
 }

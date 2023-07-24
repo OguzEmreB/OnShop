@@ -22,14 +22,14 @@ login-logout-card a.nav-link {
 }
 .sag {
     text-align: right;
-    background-color: #232f3e; /* Amazon'un üst bar rengi */
+    background-color: #232f3e;  
     width: 200px;
 }
 
     .sag a {
-        color: #FFF; /* Yazý rengini beyaz yapalým */
-        font-size: 16px; /* Yazý boyutunu düzenleyelim */
-        text-decoration: none; /* Alt çizgiyi kaldýralým */
-        text-transform: uppercase; /* Yazýlarý büyük harfe dönüþtürelim */
-        padding: 5px 10px; /* Yazýlarýn iç boþluðunu düzenleyelim */
+        color: #FFF;  
+        font-size: 16px;  
+        text-decoration: none; 
+        text-transform: uppercase;  
+        padding: 5px 10px; 
     }
