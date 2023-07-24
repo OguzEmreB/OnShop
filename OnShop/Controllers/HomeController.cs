@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OnShop.Areas.Identity.Data;
 using OnShop.Models;
-using System.Diagnostics;
+using System.Diagnostics; 
 
 namespace OnShop.Controllers
 {
@@ -22,9 +22,8 @@ namespace OnShop.Controllers
 
         [Authorize]
         public IActionResult Index()
-        {
-
-           ViewData["UserID"]= _userManager.GetUserId(this.User);
+        { 
+            ViewData["UserID"]= _userManager.GetUserId(this.User);
             return View();
         }
 

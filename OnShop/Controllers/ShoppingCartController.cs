@@ -117,8 +117,7 @@ public class ShoppingCartController : Controller
         // Sepete ekledikten sonra, doğrudan ListItemsInCart sayfasına yönlendirelim
         return RedirectToAction("ListItemsInCart");
     }
-
-
+     
 
     [Authorize]
     [HttpPost]
