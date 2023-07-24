@@ -1,56 +1,120 @@
-﻿<!DOCTYPE html>
+﻿ 
+<!DOCTYPE html>
 <html>
 <head>
     <title>Üst Sabit Menü2</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="~/css/_homelayout.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="anagovde">
-        <div id="menu">
-            <div class="sol" ">	 <h3 style="padding:7px;font-family: Arial Black;">
-
-                <a href="/Home/Index">OnShop</a></h3>
-
+        <div id="top-bar">
+            <div class="sol">
+                <h3>
+                    <a href="/Home/Index" style="color: #ff6a00;">OnShop</a>
+                </h3>
             </div>
-
-
 
             <div class="orta">
+                <div class="search-container">
+                    <!-- Search barı buraya ekle -->
+                    <input type="text" placeholder="Ara...">
+                    <button type="submit">Ara</button>
+                </div>
+                <div class="user-container">
+                    <ul class="user-tabs"> 
+                        <li>
+                            <a href="#" >Profile</a>
+                            
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <div class="sag">
+                <!-- Assuming this partial view is correctly implemented -->
+                <!-- If the partial view contains any scripts, make sure they are not causing conflicts -->
+                <partial name="_LoginPartial.cshtml" />
+            </div>
+        </div>
+        <div class="menu">
+            <div class="orta-2">
+
                 <ul class="ortaMenu">
-
-                   
-                    <li><a href="/Home/Ayakkabilar"><h3>Ayakkabı</h3></a></li>
-                    <li><a href="/Home/Tshirt"><h3>Tshirt</h3></a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">Fashion and Accessories</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Home/Shoes">Shoes</a></li>
+                            <li><a href="/Home/Tshirts">Tshirts</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"  data-toggle="dropdown">Computer</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Monitor</a></li>
+                            <li><a href="#">Keyboard</a></li>
+                            <li><a href="#">Mouse</a></li>
+                        </ul>
+                    </li>
                 </ul>
+            </div>
+            <div class="cart-container">
 
+                <ul class="cart-tabs">
+                    <li class="dropdown">
+
+                        <a href="@Url.Action("ListItemsInCart", "ShoppingCart")" id="cart-dropdown">Cart</a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="/Home/Shoes">Shoes</a></li>
+                            <li><a href="/Home/Tshirts">Tshirts</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
             </div>
 
-
-            <div class="sag">	
-
-             <partial name="_LoginPartial.cshtml"/>
-            
-            </div>
+          
 
         </div>
-
         <div id="icerik">
             <div class="post">
-
                 @RenderBody()
-
             </div>
-
-
         </div>
+        <div class="bar-2"></div> <!-- New div with class "bar-2" after the menu div and before the content div -->
         <div id="footer">Sabit Dip</div>
     </div>
 
-    <script src:"~/lib/jquery/dist/jquery.min.js"></script>
-    <script src:"~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script>
+    @*    function toggleDropdownMenu(event) {
+            var dropdownMenu = event.target.nextElementSibling;
+            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+        }
+        // JavaScript code to initialize the Bootstrap dropdown
+        var $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            $j('.dropdown-toggle').dropdown();
+        });
+     *@
+    </script>
+
+    <!-- Check for any errors or conflicts in your custom scripts as well -->
     @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- Additional custom scripts can be included here if needed -->
+
 </body>
 </html>
+ 

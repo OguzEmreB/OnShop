@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OnShop.Models;
 
-public partial class Product
+public partial class Products
 {
     public string ProductId { get; set; } = null!;
 

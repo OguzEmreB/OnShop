@@ -29,7 +29,15 @@ namespace OnShop.Controllers
         }
 
         [Authorize]
-        public IActionResult Ayakkabilar()
+        public IActionResult Shoes()
+        {
+
+            ViewBag.Products = _context.Products.Where(x => x.CategoryId == 1).ToList();
+
+            return View();
+        }
+
+        public IActionResult test()
         {
 
             ViewBag.Products = _context.Products.Where(x => x.CategoryId == 1).ToList();
@@ -37,7 +45,7 @@ namespace OnShop.Controllers
             return View();
         }
         [Authorize]
-        public IActionResult Tshirt()
+        public IActionResult Tshirts()
         {
             ViewBag.Products = _context.Products.Where(x => x.CategoryId == 2).ToList();
             return View();

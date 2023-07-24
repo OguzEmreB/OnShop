@@ -1,87 +1,241 @@
 body {
-    font-family: Toboto,sans-serif;
+    font-family: Roboto, sans-serif;
     font-size: 13px;
     margin: 0;
-    background: #FFF;
+    background: #f3f3f3;
 }
 
 #anagovde {
     border: 0px solid;
     max-width: 1200px;
-    //padding-left: 50px;
-    //padding-right: 50px;
     margin: auto;
-    display: block;
-    overflow-x: hidden;
     background-color: #FFF;
+    overflow: hidden;
 }
 
-#menu {
-    //sabit üst menü top: 0px;
+#top-bar {
     position: fixed;
-    background-color: #FFF;
-    width: 1200px;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1;
-    text-align: center;
-    display: block;
+    background-color: #1c2937;
     height: 70px;
+    display: flex;
+    align-items: center;
 }
+
+
 
 .sol {
-    float: left;
-    width: 200px;
     text-align: center;
-    background-color: #CCE5FF;
-    height: 100%;
+    background-color: #1c2937; /* Amazon'un üst bar rengi */
+    width: 200px;
+    height: 70px;
+    display: flex;
+    align-items: center;
 }
+
+    .sol h3 {
+        margin: 0;
+        padding: 7px;
+        font-family: Arial Black;
+        color: #ff6a00; /* Change the text color to orange (#ff6a00) */
+        font-size: 24px;
+        text-transform: uppercase;
+    }
 
 .orta {
+    height: auto;
     list-style: none;
-    float: left;
-    width: 800px;
-    text-align: center;
-    background-color: #FFF;
+    background-color: #1c2937;
+    flex: 1;
+    display: flex;
+    justify-content: space-between; /* Align items with space between them */
+    align-items: center; /* Center the .user-container vertically within .orta */
+}
+.search-container{
+   
+}
+.search-container input {
+    width: 300px; /* Set the width of the input to 300 pixels */
+    padding: 5px;
+}
+.user-container {
+    color: #ff6a00;
+    font-size: 16px;
+    float: right;
+ 
+}
+.user-tabs {
+    list-style: none;
+}
+    .user-container a {
+        color: #ff6a00;
+        font-size: 16px;
+    }
+
+
+
+
+
+.menu {
+    /* Add a margin-top to push it below the top-bar */
+    margin-top: 70px; /* Same height as the top-bar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #d92626;
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+.orta-2 {
+      
+    flex: 1;
+    display: flex;
+    justify-content: space-between; /* Align items with space between them */ 
+    align-items: center; /* Center the .user-container vertically within .orta */
+    height: 45px;
+    list-style: none;
+    background-color: #0f161e; /* Amazon'un üst bar rengi   #232f3e; */
+   
+}
+.ortaMenu {
+    position: relative; /* Add relative positioning to the ortaMenu */
+   
+}
+    /*   #1c252f;   #17212c;   #0f161e; */
+    .ortaMenu li {
+        top: 5px;
+        color: #0f161e;
+        display: inline-block;
+        margin: 5px 5px 0; /* Adjust the top margin to create space below the menu items */
+    }
+
+        .ortaMenu li a {
+            color: #ff6a00;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 5px 5px;
+            display: inline-block;
+        }
+
+        .ortaMenu li .dropdown-menu {
+            display: none; /* Hide the dropdown menu by default */
+            background-color: #0f161e;
+            list-style: none;
+            padding: 0;
+            width: 600px;
+            margin: 0px 0px 0; /* Adjust the top margin to create space below the menu items */
+        }
+
+            .ortaMenu li .dropdown-menu li {
+                display: block; /* Make the submenu items appear below each other */
+            }
+
+        /* Show the dropdown menu when the parent menu item is hovered */
+        .ortaMenu li:hover .dropdown-menu {
+            display: block;
+        }
+
+
+
+
+.menu .cart-container {
+    background-color: #0f161e;
+    list-style: none;
+    float: right;
+    margin-right: 5px;
     height: 100%;
+    line-height: 50px; /* Adjust the line-height to vertically center the text */
 }
 
-.ortaMenu li {
+
+    .menu .cart-container li {
+    
+        color: #0f161e;
+        display: block;
+        margin: 0px 0px 0; /* Adjust the top margin to create space below the menu items */
+    }
+
+.menu .cart-container li a {
+    color: #ff6a00;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+   
     display: inline-block;
-    margin: 0 10px;
+   
+  
+
 }
+
+        .menu .cart-container li .dropdown-menu {
+            display: none; /* Hide the dropdown menu by default */
+            background-color: #0f161e;
+            list-style: none;
+       
+            width: 220px;
+            
+           left:-200px;
+        }
+
+ 
+
+.menu .cart-container li:hover .dropdown-menu {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .sag {
-    float: right;
-    width: 200px;
     text-align: right;
-    background-color: #CCE5FF;
-    height: 100%;
+    background-color: #1c252f; /* Amazon'un üst bar rengi */
+    width: 200px;
 }
+
+    .sag a {
+        color: #FFF; /* Yazý rengini beyaz yapalým */
+        font-size: 16px; /* Yazý boyutunu düzenleyelim */
+        text-decoration: none; /* Alt çizgiyi kaldýralým */
+        text-transform: uppercase; /* Yazýlarý büyük harfe dönüþtürelim */
+        padding: 5px 10px; /* Yazýlarýn iç boþluðunu düzenleyelim */
+        list-style: none; /* Liste nokta iþaretlerini kaldýrýyoruz */
+    }
 
 #icerik {
     min-height: 760px;
     width: 100%;
     overflow-x: hidden;
-    //clear: both;
-    //border: 1px solid;
     margin-top: 75px;
-    background-color: #FFF; /*#E5FFCC;*/
+    background-color: #f3f3f3;
     height: auto;
 }
 
 .post {
+    min-height: 760px;
     margin-bottom: 20px;
     width: 100%;
-    //border: 1px solid;
-    margin-top: 20px;
+    margin-top: 35px;
     text-align: center;
-    background-color: #CCE5FF;
+    background-color: #FFF;
 }
 
-
 #footer {
-    //layout'da ' body altýna taþýndý bottom: 0px;
-    //position: relative;
-    // position: fixed;
     background-color: #FFCCE5;
     margin: auto;
     width: 1200px;

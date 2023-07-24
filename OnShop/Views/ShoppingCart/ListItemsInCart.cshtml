@@ -1,0 +1,55 @@
+﻿@model OnShop.Areas.Identity.Data.ApplicationUser
+@{
+    ViewData["Title"] = "ListItemsInCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ 
+
+@if (ViewBag.ProductsInCart != null && ((List<ShoppingCart>)ViewBag.ProductsInCart).Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                
+                <th>ProductName</th>
+                <th>Product Id</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.ProductsInCart)
+            {
+                <tr>
+                   
+                    <td>@item.ProductName</td>
+                    <td>@item.ProductId</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Price * item.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+    <div style="float:right;padding:10px; padding-right:92px;">
+        <a>Total Price: @ViewBag.TotalPrice</a>
+
+
+
+        <form style="margin: 35px 0;" method="post" asp-controller="ShoppingCart" asp-action="ClearCart">
+            <button type="submit">Clear Cart</button>
+        </form>
+    </div>
+
+}
+else
+{
+    <h3 style="margin: 70px 0;">No items in the cart.</h3>
+
+}
+
+ 
+ 

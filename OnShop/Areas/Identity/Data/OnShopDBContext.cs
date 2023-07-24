@@ -7,6 +7,7 @@ namespace OnShop.Data;
 
 public class OnShopDBContext : IdentityDbContext<ApplicationUser>
 {
+    public DbSet<ShoppingCart> ShoppingCarts { get; set; }
     public OnShopDBContext(DbContextOptions<OnShopDBContext> options)
         : base(options)
     {

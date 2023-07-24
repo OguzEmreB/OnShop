@@ -1,20 +1,35 @@
-body{
-    margin-bottom:60px;
+body {
+    margin-bottom: 60px;
 }
 
-.login-logout-card ul.nav-tabs{
+.login-logout-card ul.nav-tabs {
     margin: 0px 0px -12px 0px;
 }
-.login-logout-card li.nav-item{
-    width:50%;
-}
-login-logout-card a.nav-link{
-    font-size:1rem;
-    color:#495057;
-    text-align:center;
-    padding:1rem;
 
+.login-logout-card li.nav-item {
+    width: 50%;
 }
-.login-logout-card .card-body{
-    padding:10px 20px;
-} 
+
+login-logout-card a.nav-link {
+    font-size: 1rem;
+    color: #495057;
+    text-align: center;
+    padding: 1rem;
+}
+
+.login-logout-card .card-body {
+    padding: 10px 20px;
+}
+.sag {
+    text-align: right;
+    background-color: #232f3e; /* Amazon'un üst bar rengi */
+    width: 200px;
+}
+
+    .sag a {
+        color: #FFF; /* Yazý rengini beyaz yapalým */
+        font-size: 16px; /* Yazý boyutunu düzenleyelim */
+        text-decoration: none; /* Alt çizgiyi kaldýralým */
+        text-transform: uppercase; /* Yazýlarý büyük harfe dönüþtürelim */
+        padding: 5px 10px; /* Yazýlarýn iç boþluðunu düzenleyelim */
+    }
