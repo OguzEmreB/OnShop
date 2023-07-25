@@ -74,6 +74,30 @@ public class ShoppingCartController : Controller
     }
 
 
+    [Authorize]
+    [HttpPost]
+    public IActionResult RemoveFromCart(string productId)
+    {
+        ListItemsInCart();
+
+        var userId = _userManager.GetUserId(User);
+        var user = _userManager.FindByIdAsync(userId).Result;
+
+        if (user != null && user.ShoppingCart != null)
+        {
+            var productToRemove = user.ShoppingCart.FirstOrDefault(item => item.ProductId == productId);
+
+            if (productToRemove != null)
+            {
+                user.ShoppingCart.Remove(productToRemove);
+                _userManager.UpdateAsync(user).Wait();
+            }
+        }
+
+        return RedirectToAction("ListItemsInCart");
+    }
+
+
 
 
 
@@ -83,39 +107,30 @@ public class ShoppingCartController : Controller
     [HttpPost]
   
     public IActionResult AddToCart(string productId, int quantity)
-    {
-         
+    { 
         var userId = _userManager.GetUserId(User);
-        var user = _userManager.FindByIdAsync(userId).Result;
-
-    
+        var user = _userManager.FindByIdAsync(userId).Result; 
         if (user.ShoppingCart == null)
         {
             user.ShoppingCart = new List<ShoppingCart>();
-        }
-
+        } 
    
         var productToAdd = _dbContextProduct.Products.FirstOrDefault(p => p.ProductId == productId);
 
         
         if (productToAdd != null && !user.ShoppingCart.Any(item => item.ProductId == productToAdd.ProductId))
-        {
-     
+        { 
             var shoppingCartItem = new ShoppingCart
             {
                 ProductId = productToAdd.ProductId,
                 ProductName = productToAdd.ProductName, 
                 Price=productToAdd.Price, 
-                Quantity = quantity  
-                                
+                Quantity = quantity                          
             };
             user.ShoppingCart.Add(shoppingCartItem);
-        }
-
+        } 
     
-        _userManager.UpdateAsync(user).Wait();
-
-      
+        _userManager.UpdateAsync(user).Wait(); 
         return RedirectToAction("ListItemsInCart");
     }
      

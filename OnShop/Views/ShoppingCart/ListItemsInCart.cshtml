@@ -1,50 +1,49 @@
-﻿@model OnShop.Areas.Identity.Data.ApplicationUser
-@{
-    ViewData["Title"] = "ListItemsInCart";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿<h1 style="background-color: #0f161e; color: #fff; margin-top:65px;">Shopping Cart</h1>
 
-<style>
-  
-    .table-bordered tbody > tr > td,
-    .table-bordered thead > tr > th {
-        border: 1px solid #0f161e;
-    }
-</style>
-<div style="margin-top: 60px;">
 @if (ViewBag.ProductsInCart != null && ((List<ShoppingCart>)ViewBag.ProductsInCart).Any())
 {
-    <table class="table table-striped table-bordered" style="width: 600px; margin: 0 auto;">
+    <table class="table table-striped table-bordered" style="width: 600px; margin: 50px auto 0;">
         <thead>
             <tr>
                 <th style="text-align: center;">ProductName</th>
                 <th style="text-align: center;">Product Id</th>
                 <th style="text-align: center;">Quantity</th>
                 <th style="text-align: center;">Price</th>
+                <th style="text-align: center;">Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in ViewBag.ProductsInCart)
             {
                 <tr>
-                    <td style="text-align: left;">@item.ProductName</td>
-                    <td style="text-align: left;">@item.ProductId</td>
-                    <td style="text-align: left;">@item.Quantity</td>
-                    <td style="text-align: left;">@(item.Price * item.Quantity)</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.ProductId</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <form asp-controller="ShoppingCart" asp-action="RemoveFromCart" method="post">
+                            <input type="hidden" name="productId" value="@item.ProductId" /> 
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+ 
+                    </td>
+
                 </tr>
             }
         </tbody>
     </table>
 
-    <div style="float: right; padding: 10px; padding-right: 350px;">
-        <h4>Total Price: @ViewBag.TotalPrice</h4>
-        <form style="margin: 20px 0;" method="post" asp-controller="ShoppingCart" asp-action="ClearCart">
-            <button type="submit">Clear Cart</button>
+    <div class="text-center mt-3">
+        <h3>Total Price: @ViewBag.TotalPrice</h3>
+    </div>
+
+    <div class="text-center mt-3">
+        <form asp-controller="ShoppingCart" asp-action="ClearCart" method="post">
+            <button type="submit" class="btn btn-danger">Clear Cart</button>
         </form>
     </div>
 }
 else
 {
-    <h3 style="margin: 70px 0; text-align: center;">No items in the cart.</h3>
+    <p class="text-center mt-3">No items in the shopping cart.</p>
 }
-</div>
