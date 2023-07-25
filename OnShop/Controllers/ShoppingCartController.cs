@@ -94,7 +94,9 @@ public class ShoppingCartController : Controller
             }
         }
 
-        return RedirectToAction("ListItemsInCart");
+        string referringUrl = Request.Headers["Referer"].ToString();
+        
+        return Redirect(referringUrl);
     }
 
 
@@ -130,8 +132,13 @@ public class ShoppingCartController : Controller
             user.ShoppingCart.Add(shoppingCartItem);
         } 
     
-        _userManager.UpdateAsync(user).Wait(); 
-        return RedirectToAction("ListItemsInCart");
+        _userManager.UpdateAsync(user).Wait();
+
+
+
+        string referringUrl = Request.Headers["Referer"].ToString();
+       
+        return Redirect(referringUrl);
     }
      
 
@@ -157,7 +164,9 @@ public class ShoppingCartController : Controller
             _userManager.UpdateAsync(user).Wait();
         }
 
-        return RedirectToAction("ListItemsInCart");
+        string referringUrl = Request.Headers["Referer"].ToString();
+        
+        return Redirect(referringUrl);
     }
 
     private void PopulateCartProductDataInViewBag()

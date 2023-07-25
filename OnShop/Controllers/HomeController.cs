@@ -8,19 +8,21 @@ using System.Diagnostics;
 
 namespace OnShop.Controllers
 {
-    public class HomeController : Controller
+   public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger; 
-        private readonly OnShopDBContext _dbContext;
-        private readonly OnShopContext _dbContextProduct;
-        private readonly UserManager<ApplicationUser> _userManager;
-        public HomeController(ILogger<HomeController> logger, OnShopDBContext dbContext, OnShopContext dbContextProduct, UserManager<ApplicationUser> userManager)
+        private readonly UserManager<ApplicationUser> _userManager;  //
+        private readonly OnShopDBContext _dbContext;               //
+        private readonly OnShopContext _dbContextProduct;      
+        private readonly ILogger<HomeController> _logger;
+        
+
+        public HomeController(ILogger<HomeController> logger, OnShopDBContext dbContext, OnShopContext dbContextProduct, UserManager<ApplicationUser> userManager) 
+            : base(dbContext, userManager)
         {
             _logger = logger;
-            this._userManager = userManager; 
-            _dbContext = dbContext;
             _dbContextProduct = dbContextProduct;
-           
+            _userManager = userManager;
+            _dbContext = dbContext;
         }
 
         [Authorize]
