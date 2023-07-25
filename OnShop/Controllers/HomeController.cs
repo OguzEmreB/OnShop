@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OnShop.Areas.Identity.Data;
+using OnShop.Data;
 using OnShop.Models;
 using System.Diagnostics; 
 
@@ -9,29 +10,56 @@ namespace OnShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> _logger; 
+        private readonly OnShopDBContext _dbContext;
+        private readonly OnShopContext _dbContextProduct;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly OnShopContext _context;
-        public HomeController(ILogger<HomeController> logger,UserManager<ApplicationUser> userManager, OnShopContext context)
+        public HomeController(ILogger<HomeController> logger, OnShopDBContext dbContext, OnShopContext dbContextProduct, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
-            this._userManager = userManager;
-            _context = context;
-            
+            this._userManager = userManager; 
+            _dbContext = dbContext;
+            _dbContextProduct = dbContextProduct;
+           
         }
 
         [Authorize]
         public IActionResult Index()
-        { 
-            ViewData["UserID"]= _userManager.GetUserId(this.User);
-            return View();
+        {
+            ViewData["UserID"] = _userManager.GetUserId(this.User);
+            PopulateCartProductDataInViewBag();
+
+            return View( );
+        }
+        public List<ShoppingCart> GetCartProducts()
+        {
+
+            var userId = _userManager.GetUserId(User);
+            var user = _userManager.FindByIdAsync(userId).Result;
+
+            if (user == null)
+            {
+
+                return new List<ShoppingCart>();
+            }
+
+
+            var productsInCart = _dbContext.ShoppingCarts
+                .Where(cart => cart.ApplicationUser.Id == userId)
+                .ToList();
+
+            return productsInCart;
         }
 
         [Authorize]
         public IActionResult Shoes()
         {
 
-            ViewBag.Products = _context.Products.Where(x => x.CategoryId == 1).ToList();
+         
+            PopulateCartProductDataInViewBag();
+
+        
+            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 1).ToList();
 
             return View();
         }
@@ -39,14 +67,19 @@ namespace OnShop.Controllers
         public IActionResult test()
         {
 
-            ViewBag.Products = _context.Products.Where(x => x.CategoryId == 1).ToList();
+            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 1).ToList();
 
             return View();
         }
         [Authorize]
         public IActionResult Tshirts()
         {
-            ViewBag.Products = _context.Products.Where(x => x.CategoryId == 2).ToList();
+           
+            PopulateCartProductDataInViewBag();
+
+          
+            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 2).ToList();
+
             return View();
         }
 
@@ -56,6 +89,38 @@ namespace OnShop.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+
+        private void PopulateCartProductDataInViewBag()
+        {
+            
+            List<ShoppingCart> cartProducts = GetCartProducts();
+
+       
+            List<string> cartProductIds = new List<string>();
+            List<string> cartProductNames = new List<string>();
+            List<int> cartProductQuantities = new List<int>();
+            List<decimal> cartProductPrices = new List<decimal>();
+            decimal TotalPrice = 0;
+
+            
+            foreach (var cartProduct in cartProducts)
+            {
+                TotalPrice += cartProduct.Quantity * cartProduct.Price;
+                cartProductIds.Add(cartProduct.ProductId);
+                cartProductNames.Add(cartProduct.ProductName);
+                cartProductQuantities.Add(cartProduct.Quantity);
+                cartProductPrices.Add(cartProduct.Price);
+            }
+ 
+            ViewBag.CartProductIds = cartProductIds;
+            ViewBag.CartProductNames = cartProductNames;
+            ViewBag.CartProductQuantities = cartProductQuantities;
+            ViewBag.CartProductPrices = cartProductPrices;
+
+            ViewBag.TotalPrice = TotalPrice;
         }
     }
 }

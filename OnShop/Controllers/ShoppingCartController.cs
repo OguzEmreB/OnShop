@@ -28,7 +28,8 @@ public class ShoppingCartController : Controller
     [HttpGet]
     public IActionResult ListItemsInCart()
     {
-       
+        PopulateCartProductDataInViewBag();
+
         var productsInCart = GetCartProducts();
 
      
@@ -99,7 +100,7 @@ public class ShoppingCartController : Controller
         
         if (productToAdd != null && !user.ShoppingCart.Any(item => item.ProductId == productToAdd.ProductId))
         {
-            // ShoppingCart nesnesini oluşturalım ve ürünü ekleyelim
+     
             var shoppingCartItem = new ShoppingCart
             {
                 ProductId = productToAdd.ProductId,
@@ -142,6 +143,37 @@ public class ShoppingCartController : Controller
         }
 
         return RedirectToAction("ListItemsInCart");
+    }
+
+    private void PopulateCartProductDataInViewBag()
+    {
+  
+        List<ShoppingCart> cartProducts = GetCartProducts();
+
+      
+        List<string> cartProductIds = new List<string>();
+        List<string> cartProductNames = new List<string>();
+        List<int> cartProductQuantities = new List<int>();
+        List<decimal> cartProductPrices = new List<decimal>();
+        decimal TotalPrice = 0;
+
+       
+        foreach (var cartProduct in cartProducts)
+        {
+            TotalPrice += cartProduct.Quantity * cartProduct.Price;
+            cartProductIds.Add(cartProduct.ProductId);
+            cartProductNames.Add(cartProduct.ProductName);
+            cartProductQuantities.Add(cartProduct.Quantity);
+            cartProductPrices.Add(cartProduct.Price);
+        }
+
+    
+        ViewBag.CartProductIds = cartProductIds;
+        ViewBag.CartProductNames = cartProductNames;
+        ViewBag.CartProductQuantities = cartProductQuantities;
+        ViewBag.CartProductPrices = cartProductPrices;
+
+        ViewBag.TotalPrice = TotalPrice;
     }
 
 

@@ -204,24 +204,24 @@ body {
 
 .sag {
     text-align: right;
-    background-color: #1c252f; /* Amazon'un üst bar rengi */
+    background-color: #1c252f; 
     width: 200px;
 }
 
     .sag a {
-        color: #FFF; /* Yazý rengini beyaz yapalým */
-        font-size: 16px; /* Yazý boyutunu düzenleyelim */
-        text-decoration: none; /* Alt çizgiyi kaldýralým */
-        text-transform: uppercase; /* Yazýlarý büyük harfe dönüþtürelim */
-        padding: 5px 10px; /* Yazýlarýn iç boþluðunu düzenleyelim */
-        list-style: none; /* Liste nokta iþaretlerini kaldýrýyoruz */
+        color: #FFF; 
+        font-size: 16px; 
+        text-decoration: none; 
+        text-transform: uppercase;  
+        padding: 5px 10px;  
+        list-style: none;  
     }
 
 #icerik {
     min-height: 760px;
     width: 100%;
     overflow-x: hidden;
-    margin-top: 75px;
+    margin-top: 50px;
     background-color: #f3f3f3;
     height: auto;
 }

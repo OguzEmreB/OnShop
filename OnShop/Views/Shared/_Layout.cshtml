@@ -1,4 +1,8 @@
-﻿ 
+﻿@using Microsoft.AspNetCore.Identity
+@using OnShop.Areas.Identity.Data
+ 
+
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,21 +66,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="cart-container">
-
-                <ul class="cart-tabs">
-                    <li class="dropdown">
-
-                        <a href="@Url.Action("ListItemsInCart", "ShoppingCart")" id="cart-dropdown">Cart</a>
-
-                        <ul class="dropdown-menu">
-                        
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-
+            @{
+                Html.RenderPartial("_CartDropdownPartial");
+            }
           
 
         </div>

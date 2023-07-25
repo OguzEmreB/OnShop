@@ -1,0 +1,28 @@
+﻿ 
+
+<div class="cart-container">
+
+    <ul class="cart-tabs">
+        <li class="dropdown">
+
+            <a href="@Url.Action("ListItemsInCart", "ShoppingCart")" id="cart-dropdown">Cart</a>
+
+            <ul class="dropdown-menu">
+                @if (ViewBag.CartProductIds != null)
+                {
+                    for (int i = 0; i < ViewBag.CartProductIds.Count; i++)
+                    {
+                        <li>
+                            <a href="@Url.Action("CartItemDetails", "ShoppingCart", new { id = ViewBag.CartProductIds[i] })">
+                                @ViewBag.CartProductNames[i] - x @ViewBag.CartProductQuantities[i] - @ViewBag.CartProductPrices[i]
+                            </a>
+                        </li>
+                    }
+                    <a>Total Price:@ViewBag.TotalPrice </a>
+
+                }
+            </ul>
+        </li>
+
+    </ul>
+</div>

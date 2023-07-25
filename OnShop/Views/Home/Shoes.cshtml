@@ -1,10 +1,15 @@
 ﻿@model OnShop.Areas.Identity.Data.ApplicationUser
+@using Microsoft.AspNetCore.Identity
+@using OnShop.Areas.Identity.Data
 @{
     ViewData["Title"] = "Shoes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 style="background-color: #0f161e; color:#FFF;">Shoes</h1>
+<h1 style="background-color: #0f161e; color: #FFF; display: inline-block; padding: 5px;">
+    Shoes
+</h1>
+
 
 <style>
     .product-grid {
