@@ -32,7 +32,11 @@ namespace OnShop.Controllers
         {
 
             var userId = _userManager.GetUserId(User);
-            var user = _userManager.FindByIdAsync(userId).Result;
+            var user = _userManager.Users
+            .Include(u => u.ShoppingCart) // Explicitly include the ShoppingCart collection
+        .FirstOrDefault(u => u.Id == userId);
+
+
 
             if (user == null)
             {
@@ -52,6 +56,7 @@ namespace OnShop.Controllers
                 {
               
                     product.Price = 0;
+                    product.Quantity = 0;
                 }
             }
             return productsInCart;
