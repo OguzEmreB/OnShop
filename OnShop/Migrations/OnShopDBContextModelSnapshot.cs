@@ -8,7 +8,7 @@ using OnShop.Data;
 
 #nullable disable
 
-namespace OnShop.Migrations.OnShopDB
+namespace OnShop.Migrations
 {
     [DbContext(typeof(OnShopDBContext))]
     partial class OnShopDBContextModelSnapshot : ModelSnapshot
@@ -242,9 +242,8 @@ namespace OnShop.Migrations.OnShopDB
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("ProductId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
@@ -253,11 +252,62 @@ namespace OnShop.Migrations.OnShopDB
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<string>("StockStatus")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ShoppingCartId");
 
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("UserProducts", b =>
+                {
+                    b.Property<int>("UserProductsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserProductsId"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserProductsId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("UserProducts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -320,9 +370,20 @@ namespace OnShop.Migrations.OnShopDB
                     b.Navigation("ApplicationUser");
                 });
 
+            modelBuilder.Entity("UserProducts", b =>
+                {
+                    b.HasOne("OnShop.Areas.Identity.Data.ApplicationUser", "ApplicationUser")
+                        .WithMany("UserProducts")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
+                });
+
             modelBuilder.Entity("OnShop.Areas.Identity.Data.ApplicationUser", b =>
                 {
                     b.Navigation("ShoppingCart");
+
+                    b.Navigation("UserProducts");
                 });
 #pragma warning restore 612, 618
         }

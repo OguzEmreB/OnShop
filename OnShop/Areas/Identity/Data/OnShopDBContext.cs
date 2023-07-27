@@ -8,6 +8,8 @@ namespace OnShop.Data;
 public class OnShopDBContext : IdentityDbContext<ApplicationUser>
 {
     public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+    public DbSet<UserProducts> UserProducts { get; set; }
+
     public OnShopDBContext(DbContextOptions<OnShopDBContext> options)
         : base(options)
     {

@@ -10,75 +10,31 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Humanizer;
 using static System.Runtime.InteropServices.JavaScript.JSType;
- 
-public class ShoppingCartController : Controller
+using OnShop.Controllers;
+
+public class ShoppingCartController : BaseController
 {
-    private readonly OnShopDBContext _dbContext;
+    private readonly UserManager<ApplicationUser> _userManager;  //
+    private readonly OnShopDBContext _dbContext;               //
     private readonly OnShopContext _dbContextProduct;
-    private readonly UserManager<ApplicationUser> _userManager;
+    
+
 
     public ShoppingCartController(OnShopDBContext dbContext, OnShopContext dbContextProduct, UserManager<ApplicationUser> userManager)
+        : base(dbContext, dbContextProduct, userManager)
     {
-        _dbContext = dbContext;
+        
         _dbContextProduct = dbContextProduct;
         _userManager = userManager;
+        _dbContext = dbContext;
     }
-    [Authorize]
-    
-    [HttpGet]
-    public IActionResult ListItemsInCart()
-    {
-        PopulateCartProductDataInViewBag();
-
-        var productsInCart = GetCartProducts();
-
-     
-        ViewBag.ProductsInCart = productsInCart;
-
-       
-        decimal totalPrice = 0;
-
-    
-        foreach (var product in productsInCart)
-        {
-            totalPrice += product.Price *product.Quantity;
-        }
-
-      
-        ViewBag.TotalPrice = totalPrice;
-
-
-
-
-        return View();
-    }
-
-    public List<ShoppingCart> GetCartProducts()
-    {
-     
-        var userId = _userManager.GetUserId(User);
-        var user = _userManager.FindByIdAsync(userId).Result;
-
-        if (user == null)
-        {
-     
-            return new List<ShoppingCart>();
-        }
-
-      
-        var productsInCart = _dbContext.ShoppingCarts
-            .Where(cart => cart.ApplicationUser.Id == userId)
-            .ToList();
-
-        return productsInCart;
-    }
-
-
+   
+  
     [Authorize]
     [HttpPost]
-    public IActionResult RemoveFromCart(string productId)
+    public IActionResult RemoveFromCart(int productId)
     {
-        ListItemsInCart();
+   PopulateCartProductData();
 
         var userId = _userManager.GetUserId(User);
         var user = _userManager.FindByIdAsync(userId).Result;
@@ -98,17 +54,11 @@ public class ShoppingCartController : Controller
         
         return Redirect(referringUrl);
     }
-
-
-
-
-
-
-
+     
     [Authorize]
     [HttpPost]
   
-    public IActionResult AddToCart(string productId, int quantity)
+    public IActionResult AddToCart(int productId, int quantity)
     { 
         var userId = _userManager.GetUserId(User);
         var user = _userManager.FindByIdAsync(userId).Result; 
@@ -167,40 +117,8 @@ public class ShoppingCartController : Controller
         string referringUrl = Request.Headers["Referer"].ToString();
         
         return Redirect(referringUrl);
-    }
-
-    private void PopulateCartProductDataInViewBag()
-    {
+     }
   
-        List<ShoppingCart> cartProducts = GetCartProducts();
-
-      
-        List<string> cartProductIds = new List<string>();
-        List<string> cartProductNames = new List<string>();
-        List<int> cartProductQuantities = new List<int>();
-        List<decimal> cartProductPrices = new List<decimal>();
-        decimal TotalPrice = 0;
-
-       
-        foreach (var cartProduct in cartProducts)
-        {
-            TotalPrice += cartProduct.Quantity * cartProduct.Price;
-            cartProductIds.Add(cartProduct.ProductId);
-            cartProductNames.Add(cartProduct.ProductName);
-            cartProductQuantities.Add(cartProduct.Quantity);
-            cartProductPrices.Add(cartProduct.Price);
-        }
-
-    
-        ViewBag.CartProductIds = cartProductIds;
-        ViewBag.CartProductNames = cartProductNames;
-        ViewBag.CartProductQuantities = cartProductQuantities;
-        ViewBag.CartProductPrices = cartProductPrices;
-
-        ViewBag.TotalPrice = TotalPrice;
-    }
-
-
 }
 
 

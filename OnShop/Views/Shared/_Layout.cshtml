@@ -60,15 +60,15 @@
                     <li class="dropdown">
                         <a href="#"  data-toggle="dropdown">Computer</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Monitor</a></li>
-                            <li><a href="#">Keyboard</a></li>
+                            <li><a href="/Home/Monitor">Monitor</a></li>
+                            <li><a href="/Home/Keyboard">Keyboard</a></li>
                             <li><a href="#">Mouse</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
             @{
-                Html.RenderPartial("_CartDropdownPartial");
+                Html.RenderPartialAsync("_CartDropdownPartial");
             }
           
 

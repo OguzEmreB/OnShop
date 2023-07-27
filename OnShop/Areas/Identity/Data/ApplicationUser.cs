@@ -14,11 +14,14 @@ public class ApplicationUser : IdentityUser
     public ApplicationUser()
     {
         ShoppingCart = new List<ShoppingCart>();
+        UserProducts = new List<UserProducts>();
+
     }
 
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public List<ShoppingCart> ShoppingCart { get; set; }
+    public List <UserProducts> UserProducts { get; set; }
 }
 
     

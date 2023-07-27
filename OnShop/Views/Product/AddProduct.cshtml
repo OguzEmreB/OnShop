@@ -1,0 +1,57 @@
+﻿@model AddProductViewModel
+
+@{
+    ViewData["Title"] = "Add New Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 style="background-color: #0f161e; color: #fff; margin-top: 20px; padding: 10px;">Add New Product</h1>
+        <div id="content">
+            <form asp-action="AddProduct" asp-controller="Product" method="post">
+                <div class="form-group">
+                    <label for="ProductName">Product Name:</label>
+                    <input type="text" class="form-control" asp-for="ProductName" required />
+                </div>
+                <div class="form-group">
+                    <label for="Quantity">Quantity:</label>
+                    <input type="number" class="form-control" asp-for="Quantity" required />
+                </div>
+                <div class="form-group">
+                    <label for="Price">Price:</label>
+                    <input type="number" class="form-control" asp-for="Price" step="0.01" required />
+                </div>
+                <div class="form-group">
+                    <label for="CategoryId">Category:</label>
+                    <select class="form-control" asp-for="CategoryId">
+                        <option value="">Select a category...</option>
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <option value="@category.Value">@category.Text</option>
+                        }
+                    </select>
+                </div>
+
+            
+                <input type="hidden" asp-for="CategoryName" />
+
+                <div class="form-group">
+                    <label for="Description">Description:</label>
+                    <textarea class="form-control" asp-for="Description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="ImageUrl">Image URL:</label>
+                    <input type="text" class="form-control" asp-for="ImageUrl" />
+                </div>
+               
+
+                <button type="submit" class="btn btn-primary">Add Product</button>
+            </form>
+        </div>
+
+
+        <div asp-validation-summary="All"></div>
+    </div>
+</div>
