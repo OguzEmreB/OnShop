@@ -97,4 +97,63 @@
 
 </body>
 </html>
- 
+
+
+<script>
+    // Get the input and button elements
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+
+    // Add an event listener to the search button
+    searchButton.addEventListener('click', () => {
+        performSearch();
+    });
+
+    // Add an event listener for the Enter key to perform the search
+    searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            performSearch();
+        }
+    });
+
+    function performSearch() {
+        // Get the search query from the input element
+        const searchQuery = searchInput.value.trim();
+
+        // Perform the search based on the search query
+        // Make an AJAX request to the server to get the search results
+        if (searchQuery !== '') {
+            $.ajax({
+                type: 'GET',
+                url: '/Product/Search',
+                data: { searchQuery: searchQuery },
+                dataType: 'json',
+                success: function (data) {
+                    displaySearchResults(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    }
+
+    function displaySearchResults(results) {
+        // Clear previous search results
+        // Replace this with the code to clear previous search results
+        // For example, remove existing search results from the DOM
+
+        // Display the new search results
+        if (results.length > 0) {
+            // Loop through the search results and display them
+            for (let i = 0; i < results.length; i++) {
+                // Replace this with the code to display search results
+                // For example, create HTML elements to display each search result
+                // You can append them to a div with a specific ID to display the search results
+            }
+        } else {
+            // Replace this with the code to display a message when no search results are found
+        }
+    }
+</script>
