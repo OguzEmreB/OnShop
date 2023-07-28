@@ -40,7 +40,7 @@ public partial class OnShopContext : DbContext
         {
            
 
-            entity.Property(e => e.Description).HasMaxLength(200);
+            entity.Property(e => e.Description).HasMaxLength(120);
             entity.Property(e => e.Price).HasColumnType("money");
             entity.Property(e => e.ProductId)
                 .HasMaxLength(10)

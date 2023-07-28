@@ -190,18 +190,7 @@ body {
     display: block;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 .sag {
     text-align: right;
     background-color: #1c252f; 
@@ -236,7 +225,7 @@ body {
 }
 
 #footer {
-    background-color: #FFCCE5;
+    background-color: #1c2937;
     margin: auto;
     width: 1200px;
     height: 45px;

@@ -154,7 +154,8 @@ namespace OnShop.Controllers
                     Quantity = viewModel.Quantity,
                     Description = viewModel.Description,
                     CategoryId = viewModel.CategoryId,
-                    CategoryName = categoryName
+                    CategoryName = categoryName,
+                    ImageUrl = viewModel.ImageUrl
                 };
                 _dbContextProduct.Products.Add(product);
                 _dbContextProduct.SaveChanges();
@@ -171,7 +172,8 @@ namespace OnShop.Controllers
                     Quantity = viewModel.Quantity,
                     Description = viewModel.Description,
                     CategoryId = viewModel.CategoryId,
-                    CategoryName = categoryName 
+                    CategoryName = categoryName,
+                    ImageUrl = viewModel.ImageUrl
                 };
                 _dbContext.UserProducts.Add(userProduct);
                 _dbContext.SaveChanges();

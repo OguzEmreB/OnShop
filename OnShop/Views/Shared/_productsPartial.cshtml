@@ -1,34 +1,43 @@
-﻿ 
-
-
-
-
-<style>
+﻿<style>
     .product-grid {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
 
     .product-item {
-        width: 200px;
-        height: 400px;
+        width: 250px;
+        height: 450px;
         border: 1px solid black;
         padding: 10px;
         margin: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        display: flex;  
+        flex-direction: column; 
+        justify-content: space-between; 
+        position: relative;  
     }
 
     .product-image {
-        max-width: 100%;
-        max-height: 200px;
+       
+        height: 200px;
+        object-fit: contain;
     }
 
     .product-details {
         text-align: center;
+        height:250px;
+        word-wrap: break-word;
+        
     }
-</style>
+
+    .addButton {
+        position: absolute;  
+        bottom: 10px;  
+        left: 50%; 
+        
+  
+    }
+</style> 
 <div class="product-grid">
     @foreach (var product in ViewBag.Products)
     {
@@ -36,25 +45,61 @@
             <img class="product-image" src="@product.ImageUrl" alt="@product.ProductName" />
 
             <div class="product-details">
-                <h3>@product.ProductName</h3>
-                <p>Stok: @product.Quantity</p>
-                <p>Fiyat: @product.Price</p>
-                <p>Açıklama: @product.Description</p>
+                <h4>@product.ProductName</h4>
+                <p>Stock: @product.Quantity</p>
+                <p>Price: @string.Format("{0:0}", @product.Price)</p>
+                <p>Description: @product.Description</p>
 
-                <div class="quantity-control">
-                    <button type="button" onclick="updateQuantity('@product.ProductId', 1)">+</button>
-                    <input type="number" class="quantity-input" value="1" min="1" max="@product.Quantity" id="@product.ProductId" name="quantity" oninput="updateQuantity('@product.ProductId', 0)" />
-                    <button type="button" onclick="updateQuantity('@product.ProductId', -1)">-</button>
+                <div class="addButton">
+                    <div class="quantity-control">
+                        <button type="button" onclick="updateQuantity('@product.ProductId', 1)">+</button>
+                        <input type="number" class="quantity-input" value="1" min="1" max="@product.Quantity" id="@product.ProductId" name="quantity" oninput="updateQuantity('@product.ProductId', 0)" size="6" />
+
+                        <button type="button" onclick="updateQuantity('@product.ProductId', -1)">-</button>
+                    </div>
+
+                    <form method="post" asp-controller="ShoppingCart" asp-action="AddToCart">
+                        <input type="hidden" name="productId" value="@product.ProductId" />
+                        <input type="hidden" name="quantity" id="quantity_@product.ProductId" value="1" />
+                        <button type="submit">Add To Cart</button>
+                    </form>
                 </div>
-
-                <form method="post" asp-controller="ShoppingCart" asp-action="AddToCart">
-                    <input type="hidden" name="productId" value="@product.ProductId" />
-                    <input type="hidden" name="quantity" id="quantity_@product.ProductId" value="1" />
-                    <button type="submit">Add To Cart</button>
-                </form>
             </div>
         </div>
     }
 </div>
+<style>
+    .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
+    .product-item {
+        width: 250px;
+        height: 450px;
+        border: 1px solid black;
+        padding: 10px;
+        margin: 10px;
+        display: flex; /* .product-item'ı bir flex konteyneri yap */
+        flex-direction: column; /* Yatay yerine dikey yönde sırala içerikleri */
+        justify-content: space-between; /* Üstten alta doğru yerleştir */
+        position: relative; /* .product-item'ı göreceli konumlandırma yap */
+    }
 
+    .product-image {
+        height: 200px;
+        object-fit: contain;
+    }
+
+    .product-details {
+        text-align: center;
+        height: 250px;
+    }
+
+    .addButton {
+        position: absolute; /* .addButton'ı mutlak konumlandırma yap */
+        bottom: 10px; /* En alttan 10 piksel yukarıda olacak */
+        left: 50%; /* Sol kenara göre yatayda ortalanacak */
+        transform: translateX(-50%); /* Yatayda tam ortalanacak */
+    }
+</style>

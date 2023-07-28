@@ -20,13 +20,13 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Category Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Product Id</th>
-                            <th>Image</th>
+                            <th style="text-align:center;">Product Name</th>
+                            <th style="text-align:center;">Category Name</th>
+                            <th style="text-align:center;">Description</th>
+                            <th style="text-align:center;">Price</th>
+                            <th style="text-align:center;">Quantity</th>
+                            <th style="text-align:center;">Product Id</th>
+                            <th style="text-align:center;">Image</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +35,7 @@
                             <tr>
                                 <td>@product.ProductName</td>
                                 <td>@product.CategoryName</td>
-                                <td>@product.Description</td>
+                                <td>@(product.Description?.Length > 30 ? product.Description.Substring(0, 20) + "..." : product.Description)</td>
                                 <td>@product.Price</td>
                                 <td>@product.Quantity</td>
                                 <td>@product.ProductId</td>
