@@ -36,7 +36,7 @@ namespace OnShop.Controllers
             return View();
         }
 
-        [Authorize]
+         
         public IActionResult Shoes()
         {
 
@@ -48,7 +48,19 @@ namespace OnShop.Controllers
 
             return View();
         }
-        [Authorize]
+        public IActionResult Tshirts()
+        {
+
+            PopulateCartProductData();
+
+
+            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 2).ToList();
+
+            return View();
+        }
+
+        
+        
         public IActionResult Monitors()
         {
 
@@ -60,7 +72,7 @@ namespace OnShop.Controllers
 
             return View();
         }
-        [Authorize]
+       
         public IActionResult Keyboards()
         {
 
@@ -74,17 +86,18 @@ namespace OnShop.Controllers
         }
 
 
-        [Authorize]
-        public IActionResult Tshirts()
+        public IActionResult Mouse()
         {
+
 
             PopulateCartProductData();
 
 
-            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 2).ToList();
+            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 5).ToList();
 
             return View();
         }
+
 
 
 

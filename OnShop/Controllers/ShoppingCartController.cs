@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Humanizer;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using OnShop.Controllers;
+using NuGet.Protocol.Plugins;
+using System.Security.Principal;
 
 public class ShoppingCartController : BaseController
 {
@@ -55,13 +57,21 @@ public class ShoppingCartController : BaseController
         return Redirect(referringUrl);
     }
      
-    [Authorize]
+   
     [HttpPost]
   
     public IActionResult AddToCart(int productId, int quantity)
-    { 
+    {
+        if (!User.Identity.IsAuthenticated)   
+        {
+            return LocalRedirect("~/Identity/Account/Login");
+
+        }
+
         var userId = _userManager.GetUserId(User);
-        var user = _userManager.FindByIdAsync(userId).Result; 
+        var user = _userManager.FindByIdAsync(userId).Result;
+
+       
         if (user.ShoppingCart == null)
         {
             user.ShoppingCart = new List<ShoppingCart>();
@@ -85,8 +95,7 @@ public class ShoppingCartController : BaseController
     
         _userManager.UpdateAsync(user).Wait();
 
-
-
+       
         string referringUrl = Request.Headers["Referer"].ToString();
        
         return Redirect(referringUrl);
