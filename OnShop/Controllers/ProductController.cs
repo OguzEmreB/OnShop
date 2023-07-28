@@ -233,9 +233,19 @@ namespace OnShop.Controllers
             return Redirect(referringUrl);
         }
 
+        [HttpGet]
+        public IActionResult ProductSearch(string searchTerm)
+        {
+            var products = _dbContextProduct.Products
+                .Where(p => p.ProductName.Contains(searchTerm) ||
+                            p.CategoryName.Contains(searchTerm) ||
+                            p.Description.Contains(searchTerm))
+                .ToList();
+            ViewBag.SearchTerm = searchTerm;
+            ViewBag.Products = products; // Set the ViewBag.Products property
 
-
-
+            return View();
+        }
 
 
 

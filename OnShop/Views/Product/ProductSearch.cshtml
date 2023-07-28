@@ -1,0 +1,30 @@
+﻿@model List<Products>
+@{
+    ViewData["Title"] = "Search";
+   
+}
+
+@{
+    string searchTerm = ViewBag.SearchTerm;
+    if (!string.IsNullOrEmpty(searchTerm) && searchTerm.Length > 30)
+    {
+        searchTerm = searchTerm.Substring(0, 30);
+    }
+}
+<h1 style="background-color: #0f161e; color: #FFF; display: inline-block; padding: 5px;">
+    Search Results @searchTerm ...
+    
+   
+</h1>
+
+
+
+
+@if (ViewBag.Products.Count > 0)
+{
+    <partial name="_productsPartial" model="@ViewBag.Products" />
+}
+else
+{
+    <p>No results found.</p>
+}

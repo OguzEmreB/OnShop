@@ -3,7 +3,7 @@
     ViewData["Title"] = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+ 
 <div class="row" >
     <div class="col-md-3">
         <div class="list-group position-sticky" style="margin-top: 65px;">
@@ -28,6 +28,7 @@
                             <th style="text-align: center;">Quantity</th>
                             <th style="text-align: center;">Price</th>
                             <th style="text-align: center;">Status</th>
+                            <th style="text-align: center;">Image</th>
                             <th style="text-align: center;">Actions</th>
                         </tr>
                     </thead>
@@ -39,7 +40,17 @@
                                 <td>@item.ProductId</td>
                                 <td>@item.Quantity</td>
                                 <td>@item.Price</td>
-                                <td><a>@item.StockStatus</a></td>
+                                <td>@item.StockStatus</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(@item.ImageUrl))
+                                    {
+                                        <img src="@Url.Content(@item.ImageUrl)" style="max-width: 100px; max-height: 100px;" alt="@item.ProductName" />
+                                    }
+                                    else
+                                    {
+                                        <span>No Image</span>
+                                    }
+                                </td>
                                  
                                 <td>
                                     <form asp-controller="ShoppingCart" asp-action="RemoveFromCart" method="post">

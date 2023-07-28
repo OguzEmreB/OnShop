@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnShop.Data;
 
@@ -11,9 +12,11 @@ using OnShop.Data;
 namespace OnShop.Migrations
 {
     [DbContext(typeof(OnShopDBContext))]
-    partial class OnShopDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230728202609_OnShopCartImageUrl")]
+    partial class OnShopCartImageUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
