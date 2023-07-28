@@ -1,78 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Tshirts";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+ 
 }
 
 <h1 style="background-color: #0f161e; color: #FFF; display: inline-block; padding: 5px;">
     Tshirts
 </h1>
 
-<style>
-    .product-grid {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .product-item {
-        width: 200px;
-        height: 400px;
-        border: 1px solid black;
-        padding: 10px;
-        margin: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .product-image {
-        max-width: 100%;
-        max-height: 200px;
-    }
-
-    .product-details {
-        text-align: center;
-    }
-
-    table {
-        display: none;
-    }
-</style>
-
-<div class="product-grid">
-    @foreach (var product in ViewBag.Products)
-    {
-        <div class="product-item">
-            <img class="product-image" src="@product.ImageUrl" alt="@product.ProductName" />
-
-            <div class="product-details">
-                <h3>@product.ProductName</h3>
-                <p>Stok: @product.Quantity</p>
-                <p>Fiyat: @product.Price</p>
-                <p>Açıklama: @product.Description</p>
-
-                <div class="quantity-control">
-
-                 
-
-               
-                    <button type="button" onclick="updateQuantity('@product.ProductId', 1)">+</button>
-                    <input type="number" class="quantity-input" value="1" min="1" max="@product.Quantity" id="@product.ProductId" name="quantity" oninput="updateQuantity('@product.ProductId', 0)" />
-                    <button type="button" onclick="updateQuantity('@product.ProductId', -1)">-</button>
-                </div>
-
-                <form method="post" asp-controller="ShoppingCart" asp-action="AddToCart">
-                    <input type="hidden" name="productId" value="@product.ProductId" />
-                    <input type="hidden" name="quantity" id="quantity_@product.ProductId" value="1" />
-                    <button type="submit">Add To Cart</button>
-                </form>
-            </div>
-        </div>
-    }
-
-   
-
-
-</div>
+@await Html.PartialAsync("_productsPartial", (List<Products>)ViewBag.Products)
 
 @section Scripts {
     <script>
@@ -86,6 +21,4 @@
             }
         }
     </script>
-
-
-        }
+}

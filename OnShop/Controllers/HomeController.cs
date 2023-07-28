@@ -49,7 +49,7 @@ namespace OnShop.Controllers
             return View();
         }
         [Authorize]
-        public IActionResult Monitor()
+        public IActionResult Monitors()
         {
 
 
@@ -61,7 +61,7 @@ namespace OnShop.Controllers
             return View();
         }
         [Authorize]
-        public IActionResult Keyboard()
+        public IActionResult Keyboards()
         {
 
 

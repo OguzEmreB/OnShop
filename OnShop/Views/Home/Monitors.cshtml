@@ -1,16 +1,13 @@
-﻿ 
-@{
-    ViewData["Title"] = "Shoes";
- 
+﻿@{
+    ViewData["Title"] = "Monitors";
 }
 
 <h1 style="background-color: #0f161e; color: #FFF; display: inline-block; padding: 5px;">
-    Shoes
+    Monitors
 </h1>
  
-
-@await Html.PartialAsync("_productsPartial", "ViewBag.Products")
-
+    @await Html.PartialAsync("_productsPartial", (List<Products>)ViewBag.Products)
+ 
 @section Scripts {
     <script>
         function updateQuantity(productId, value) {
