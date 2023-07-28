@@ -3,7 +3,12 @@
     ViewData["Title"] = "Your Products";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
+<style>
+    td.remove-btn {
+        align-items: center;
+        vertical-align: middle;
+    }
+</style>
 <div class="row">
     <div class="col-md-3">
         <div class="list-group position-sticky" style="margin-top: 65px;">
@@ -33,12 +38,12 @@
                         @foreach (var product in Model)
                         {
                             <tr>
-                                <td>@product.ProductName</td>
-                                <td>@product.CategoryName</td>
-                                <td>@(product.Description?.Length > 30 ? product.Description.Substring(0, 20) + "..." : product.Description)</td>
-                                <td>@product.Price</td>
-                                <td>@product.Quantity</td>
-                                <td>@product.ProductId</td>
+                                <td style="vertical-align: middle;">@product.ProductName</td>
+                                <td style="vertical-align: middle;">@product.CategoryName</td>
+                                <td style="vertical-align: middle;">@(product.Description?.Length > 30 ? product.Description.Substring(0, 20) + "..." : product.Description)</td>
+                                <td style="vertical-align: middle;">@product.Price</td>
+                                <td style="vertical-align: middle;">@product.Quantity</td>
+                                <td style="vertical-align: middle;">@product.ProductId</td>
                                 <td>
                                     @if (!string.IsNullOrEmpty(product.ImageUrl))
                                     {
@@ -50,8 +55,8 @@
                                     }
                                 </td>
 
-                                <td>
-                                <form asp-action="RemoveProduct" asp-controller="Product" method="post">
+                                <td class="remove-btn">
+                                    <form asp-action="RemoveProduct" asp-controller="Product" method="post" >
                                     <input type="hidden" name="productId" value="@product.ProductId" />
                                     <button type="submit" class="btn btn-primary">Remove</button>
                                 </form>

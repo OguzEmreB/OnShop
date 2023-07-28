@@ -4,6 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
  
+
+<style>
+    td.remove-btn {
+     
+        align-items: center;
+        vertical-align: middle;
+    }
+</style>
+
 <div class="row" >
     <div class="col-md-3">
         <div class="list-group position-sticky" style="margin-top: 65px;">
@@ -36,11 +45,11 @@
                         @foreach (var item in ViewBag.ProductsInCart)
                         {
                             <tr>
-                                <td>@item.ProductName</td>
-                                <td>@item.ProductId</td>
-                                <td>@item.Quantity</td>
-                                <td>@item.Price</td>
-                                <td>@item.StockStatus</td>
+                                <td style="vertical-align: middle;">@item.ProductName</td>
+                                <td style ="vertical-align: middle;">@item.ProductId</td>
+                                <td style="vertical-align: middle;">@item.Quantity</td>
+                                <td style="vertical-align: middle;">@item.Price</td>
+                                <td style="vertical-align: middle;">@item.StockStatus</td>
                                 <td>
                                     @if (!string.IsNullOrEmpty(@item.ImageUrl))
                                     {
@@ -51,12 +60,13 @@
                                         <span>No Image</span>
                                     }
                                 </td>
-                                 
-                                <td>
-                                    <form asp-controller="ShoppingCart" asp-action="RemoveFromCart" method="post">
+
+                                <td class="remove-btn">
+                                    <form asp-controller="ShoppingCart" asp-action="RemoveFromCart" method="post"  >
                                         <input type="hidden" name="productId" value="@item.ProductId" />
-                                        <button type="submit" formaction="/ShoppingCart/RemoveFromCart" formmethod="post" class="btn btn-danger">Remove</button>
+                                        <button type="submit" formaction="/ShoppingCart/RemoveFromCart" formmethod="post" class="btn btn-danger align-middle">Remove</button>
                                     </form>
+
                                      
                                 </td>
                               
