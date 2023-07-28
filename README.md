@@ -5,7 +5,8 @@
  
 
 ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/5059a303-323d-4e9d-8a93-c64ca2d74755)
- 
+ ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/3ba7e49d-811d-41f8-ab69-955bdb963681)
+
 
 ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/ce420824-ab63-45ec-99ad-5208e3e28713)
  
