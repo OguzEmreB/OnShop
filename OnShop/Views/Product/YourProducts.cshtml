@@ -41,7 +41,7 @@
                                 <td style="vertical-align: middle;">@product.ProductName</td>
                                 <td style="vertical-align: middle;">@product.CategoryName</td>
                                 <td style="vertical-align: middle;">@(product.Description?.Length > 30 ? product.Description.Substring(0, 20) + "..." : product.Description)</td>
-                                <td style="vertical-align: middle;">@product.Price</td>
+                                <td style="vertical-align: middle; width: 25px;;"> @string.Format("{0:0.0}", @product.Price) $</td>
                                 <td style="vertical-align: middle;">@product.Quantity</td>
                                 <td style="vertical-align: middle;">@product.ProductId</td>
                                 <td>
@@ -60,6 +60,12 @@
                                     <input type="hidden" name="productId" value="@product.ProductId" />
                                     <button type="submit" class="btn btn-primary">Remove</button>
                                 </form>
+                                </td>
+                                <td class="edit-btn">
+                                    <form asp-action="EditProduct" asp-controller="Product" method="get">
+                                        <input type="hidden" name="ProductId" value="@product.ProductId" />
+                                        <button type="submit" class="btn btn-success">Edit</button>
+                                    </form>
                                 </td>
                             </tr>
                         }

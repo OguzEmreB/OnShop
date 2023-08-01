@@ -14,15 +14,14 @@ namespace OnShop.Controllers
  
     public class BaseController : Controller
     {
-        protected readonly OnShopDBContext _dbContext;
-        protected readonly OnShopContext _dbContextProduct;
+        protected readonly OnShopDBContext _dbContext; 
         protected readonly UserManager<ApplicationUser> _userManager;
 
-        public BaseController(OnShopDBContext dbContext, OnShopContext dbContextProduct, UserManager<ApplicationUser> userManager)
+        public BaseController(OnShopDBContext dbContext,UserManager<ApplicationUser> userManager)
         {
             _dbContext = dbContext;
             _userManager = userManager;
-            _dbContextProduct = dbContextProduct;
+          
         }
 
     
@@ -30,10 +29,11 @@ namespace OnShop.Controllers
 
         protected List<ShoppingCart> GetCartProducts()
         {
+            UpdateCart();
 
             var userId = _userManager.GetUserId(User);
             var user = _userManager.Users
-            .Include(u => u.ShoppingCart) // Explicitly include the ShoppingCart collection
+            .Include(u => u.ShoppingCart) 
         .FirstOrDefault(u => u.Id == userId);
 
 
@@ -50,7 +50,7 @@ namespace OnShop.Controllers
 
             foreach (var product in productsInCart)
             {
-                var isOutOfStock = !_dbContextProduct.Products.Any(p => p.ProductId == product.ProductId);
+                var isOutOfStock = !_dbContext.Products.Any(p => p.ProductId == product.ProductId);
                 product.StockStatus = isOutOfStock ? "Out of Stock" : "In Stock";
                 if (isOutOfStock)
                 {
@@ -90,7 +90,42 @@ namespace OnShop.Controllers
             ViewBag.TotalPrice = TotalPrice;
         }
 
-       
+
+        [Authorize]
+        [HttpPost]
+        public void UpdateCart()
+        {
+            var userId = _userManager.GetUserId(User);
+            var user = _userManager.Users
+                .Include(u => u.ShoppingCart)
+                .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            var productsInCart = user.ShoppingCart.ToList();
+
+            foreach (var cartProduct in productsInCart)
+            {
+               
+                var product = _dbContext.Products.FirstOrDefault(p => p.ProductId == cartProduct.ProductId);
+
+                if (product != null)
+                { 
+                    cartProduct.ProductName = product.ProductName;
+                    cartProduct.Price = product.Price;
+
+ 
+                }
+            }
+
+            _dbContext.SaveChanges();
+             
+        }
+
+
 
 
     }

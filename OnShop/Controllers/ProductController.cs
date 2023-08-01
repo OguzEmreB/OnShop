@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using OnShop.Areas.Identity.Data;
 using OnShop.Data;
@@ -16,15 +17,15 @@ namespace OnShop.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;  //
         private readonly OnShopDBContext _dbContext;                 //
-        private readonly OnShopContext _dbContextProduct;
+  
         private readonly ILogger<HomeController> _logger;
 
 
-        public ProductController(OnShopDBContext dbContext, OnShopContext dbContextProduct, UserManager<ApplicationUser> userManager)
-            : base(dbContext, dbContextProduct, userManager)
+        public ProductController(OnShopDBContext dbContext, UserManager<ApplicationUser> userManager)
+            : base(dbContext, userManager)
         {
 
-            _dbContextProduct = dbContextProduct;
+             
             _userManager = userManager;
             _dbContext = dbContext;
         }
@@ -65,8 +66,8 @@ namespace OnShop.Controllers
             PopulateUserProductData();
             var userProducts = GetUserProducts();
 
-            
           
+
             return View(userProducts);
         }
 
@@ -116,81 +117,8 @@ namespace OnShop.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult AddProduct()
-        {
-            var categories = _dbContextProduct.Categories
-                .Select(p => new SelectListItem { Value = p.CategoryId.ToString(), Text = p.CategoryName })
-                .ToList();
+    
 
-            ViewBag.Categories = categories;
-
-            return View();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public IActionResult AddProduct(AddProductViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var userId = _userManager.GetUserId(User);
-
-
-
-
-              
-                var categoryName = _dbContextProduct.Categories
-                    .Where(c => c.CategoryId == viewModel.CategoryId)
-                    .Select(c => c.CategoryName)
-                    .FirstOrDefault();
-
-          
-                var product = new Products
-                {
-                    UserId = userId,
-                    ProductName = viewModel.ProductName,
-                    Price = viewModel.Price,
-                    Quantity = viewModel.Quantity,
-                    Description = viewModel.Description,
-                    CategoryId = viewModel.CategoryId,
-                    CategoryName = categoryName,
-                    ImageUrl = viewModel.ImageUrl
-                };
-                _dbContextProduct.Products.Add(product);
-                _dbContextProduct.SaveChanges();
-
-              
-
-             
-                var userProduct = new UserProducts
-                {
-                    ProductId = product.ProductId,
-                    UserId = userId,
-                    ProductName = viewModel.ProductName,
-                    Price = viewModel.Price,
-                    Quantity = viewModel.Quantity,
-                    Description = viewModel.Description,
-                    CategoryId = viewModel.CategoryId,
-                    CategoryName = categoryName,
-                    ImageUrl = viewModel.ImageUrl
-                };
-                _dbContext.UserProducts.Add(userProduct);
-                _dbContext.SaveChanges();
-
-                return RedirectToAction("YourProducts");
-            }
-
-            var categories = _dbContextProduct.Categories
-                .Select(p => new SelectListItem { Value = p.CategoryId.ToString(), Text = p.CategoryName })
-                .ToList();
-
-            ViewBag.Categories = categories;
-
-            return View();
-        }
-
- 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -202,7 +130,7 @@ namespace OnShop.Controllers
             PopulateUserProductData();
             var userId = _userManager.GetUserId(User);
             var user = _userManager.FindByIdAsync(userId).Result;
-
+        
             if (user != null && user.UserProducts != null)
             {
               
@@ -215,11 +143,11 @@ namespace OnShop.Controllers
                     _dbContext.SaveChanges();
 
                     
-                    var productFromProductsTable = _dbContextProduct.Products.FirstOrDefault(p => p.ProductId == productId);
+                    var productFromProductsTable = _dbContext.Products.FirstOrDefault(p => p.ProductId == productId);
                     if (productFromProductsTable != null)
                     {
-                        _dbContextProduct.Products.Remove(productFromProductsTable);
-                        _dbContextProduct.SaveChanges();
+                        _dbContext.Products.Remove(productFromProductsTable);
+                        _dbContext.SaveChanges();
                     }
                 }
                 else
@@ -236,7 +164,7 @@ namespace OnShop.Controllers
         [HttpGet]
         public IActionResult ProductSearch(string searchTerm)
         {
-            var products = _dbContextProduct.Products
+            var products = _dbContext.Products
                 .Where(p => p.ProductName.Contains(searchTerm) ||
                             p.CategoryName.Contains(searchTerm) ||
                             p.Description.Contains(searchTerm))
@@ -245,6 +173,143 @@ namespace OnShop.Controllers
             ViewBag.Products = products; // Set the ViewBag.Products property
 
             return View();
+        }
+        [HttpGet]
+        public IActionResult AddProduct()
+        {
+            var categories = _dbContext.Categories
+                .Select(p => new SelectListItem { Value = p.CategoryId.ToString(), Text = p.CategoryName })
+                .ToList();
+
+            ViewBag.Categories = categories;
+
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult AddProduct(AddProductViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = _userManager.GetUserId(User);  
+                var categoryName = _dbContext.Categories
+                    .Where(c => c.CategoryId == viewModel.CategoryId)
+                    .Select(c => c.CategoryName)
+                    .FirstOrDefault(); 
+
+                var product = new Products
+                {
+                    UserId = userId,
+                    ProductName = viewModel.ProductName,
+                    Price = viewModel.Price,
+                    Quantity = viewModel.Quantity,
+                    Description = viewModel.Description,
+                    CategoryId = viewModel.CategoryId,
+                    CategoryName = categoryName,
+                    ImageUrl = viewModel.ImageUrl
+                };
+               
+              
+
+                var userProduct = new UserProducts
+                {
+                    
+                    ProductName = viewModel.ProductName, 
+                    
+                    Price = viewModel.Price,
+                    Quantity = viewModel.Quantity,
+                    Description = viewModel.Description,
+                    CategoryId = viewModel.CategoryId,
+                    CategoryName = categoryName,
+                    ImageUrl = viewModel.ImageUrl,
+                    ApplicationUser = _dbContext.Users.FirstOrDefault(u => u.Id == userId)
+                };
+               
+                _dbContext.UserProducts.Add(userProduct);
+                _dbContext.SaveChanges();
+
+               
+                product.UserProductId = userProduct.UserProductId;
+               
+                _dbContext.Products.Add(product);
+                _dbContext.SaveChanges();
+                userProduct.ProductId = product.ProductId; 
+                _dbContext.SaveChanges();
+
+                return RedirectToAction("YourProducts");
+            } 
+            var categories = _dbContext.Categories
+                .Select(p => new SelectListItem { Value = p.CategoryId.ToString(), Text = p.CategoryName })
+                .ToList();
+
+            ViewBag.Categories = categories;
+
+            return View();
+        }
+        [HttpGet]
+       
+        public IActionResult EditProduct(int ProductId)
+        {
+            var userId = _userManager.GetUserId(User);
+            var user = _userManager.FindByIdAsync(userId).Result;
+    
+
+            var productToEdit = _dbContext.UserProducts.FirstOrDefault(p => p.ProductId == ProductId);
+
+            productToEdit.ApplicationUser = user;
+
+            if (productToEdit == null)
+            {
+                return NotFound();
+            }
+
+          
+            return View("EditProduct", productToEdit);
+        }
+
+
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditProduct([Bind("UserProductId, ProductName,ProductId, Price, Description, Quantity, CategoryName, CategoryId, ImageUrl,ApplicationUser")] UserProducts productToEdit)
+        {
+            var userId = _userManager.GetUserId(User);
+            var user = _userManager.FindByIdAsync(userId).Result;
+            productToEdit.ApplicationUser = user;
+            var userProduct = _dbContext.UserProducts.FirstOrDefault(up => up.UserProductId == productToEdit.UserProductId && up.UserId == userId);
+            var product = _dbContext.Products.FirstOrDefault(up => up.UserProductId == productToEdit.UserProductId && up.UserId == userId);
+
+            if (ModelState.IsValid)
+            {
+                // Find the existing UserProduct entity in the database based on UserProductsId
+             
+                // Update the properties of the existing UserProduct entity
+               
+                if (userProduct != null)
+                {
+                  
+                   userProduct.ProductId = product.ProductId;
+                    product.ProductName = userProduct.ProductName = productToEdit.ProductName;
+                    product.Price = userProduct.Price = productToEdit.Price;
+                    product.Description = userProduct.Description = productToEdit.Description;
+                    product.Quantity = userProduct.Quantity = productToEdit.Quantity;
+                    product.CategoryName = userProduct.CategoryName = productToEdit.CategoryName;
+                    product.ImageUrl = userProduct.ImageUrl = productToEdit.ImageUrl;
+                    product.UserProductId = productToEdit.UserProductId;
+
+                    UpdateCart( );
+
+                    // Save changes to the database
+                    _dbContext.SaveChanges();
+                }
+
+                return RedirectToAction("YourProducts");
+            }
+
+            return View(productToEdit);
         }
 
 

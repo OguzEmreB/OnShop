@@ -18,15 +18,15 @@ public class ShoppingCartController : BaseController
 {
     private readonly UserManager<ApplicationUser> _userManager;  //
     private readonly OnShopDBContext _dbContext;               //
-    private readonly OnShopContext _dbContextProduct;
+   
     
 
 
-    public ShoppingCartController(OnShopDBContext dbContext, OnShopContext dbContextProduct, UserManager<ApplicationUser> userManager)
-        : base(dbContext, dbContextProduct, userManager)
+    public ShoppingCartController(OnShopDBContext dbContext,  UserManager<ApplicationUser> userManager)
+        : base(dbContext, userManager)
     {
         
-        _dbContextProduct = dbContextProduct;
+        
         _userManager = userManager;
         _dbContext = dbContext;
     }
@@ -77,7 +77,7 @@ public class ShoppingCartController : BaseController
             user.ShoppingCart = new List<ShoppingCart>();
         } 
    
-        var productToAdd = _dbContextProduct.Products.FirstOrDefault(p => p.ProductId == productId);
+        var productToAdd = _dbContext.Products.FirstOrDefault(p => p.ProductId == productId);
 
         
         if (productToAdd != null && !user.ShoppingCart.Any(item => item.ProductId == productToAdd.ProductId))
@@ -100,11 +100,11 @@ public class ShoppingCartController : BaseController
        
         return Redirect(referringUrl);
     }
-     
+
 
     [Authorize]
     [HttpPost]
-  
+
     public IActionResult ClearCart()
     {
         var userId = _userManager.GetUserId(User);
@@ -112,23 +112,24 @@ public class ShoppingCartController : BaseController
 
         if (user != null)
         {
-            
+
             var userCartItems = _dbContext.ShoppingCarts.Where(cart => cart.ApplicationUser.Id == userId);
             _dbContext.ShoppingCarts.RemoveRange(userCartItems);
             _dbContext.SaveChanges();
 
-         
+
             user.ShoppingCart.Clear();
 
-         
+
             _userManager.UpdateAsync(user).Wait();
         }
 
         string referringUrl = Request.Headers["Referer"].ToString();
-        
+
         return Redirect(referringUrl);
-     }
-  
+    }
+   
+
 }
 
 

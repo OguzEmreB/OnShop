@@ -12,15 +12,15 @@ namespace OnShop.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;  //
         private readonly OnShopDBContext _dbContext;               //
-        private readonly OnShopContext _dbContextProduct;      
+       
         private readonly ILogger<HomeController> _logger;
         
 
-        public HomeController(ILogger<HomeController> logger, OnShopDBContext dbContext, OnShopContext dbContextProduct, UserManager<ApplicationUser> userManager) 
-            : base(dbContext, dbContextProduct, userManager)
+        public HomeController(ILogger<HomeController> logger, OnShopDBContext dbContext, UserManager<ApplicationUser> userManager) 
+            : base(dbContext, userManager)
         {
             _logger = logger;
-            _dbContextProduct = dbContextProduct;
+     
             _userManager = userManager;
             _dbContext = dbContext;
         }
@@ -44,7 +44,7 @@ namespace OnShop.Controllers
             PopulateCartProductData();
 
 
-            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 1).ToList();
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 1).ToList();
 
             return View();
         }
@@ -54,7 +54,7 @@ namespace OnShop.Controllers
             PopulateCartProductData();
 
 
-            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 2).ToList();
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 2).ToList();
 
             return View();
         }
@@ -68,7 +68,7 @@ namespace OnShop.Controllers
             PopulateCartProductData();
 
 
-            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 3).ToList();
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 3).ToList();
 
             return View();
         }
@@ -80,7 +80,7 @@ namespace OnShop.Controllers
             PopulateCartProductData();
 
 
-            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 4).ToList();
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 4).ToList();
 
             return View();
         }
@@ -93,7 +93,7 @@ namespace OnShop.Controllers
             PopulateCartProductData();
 
 
-            ViewBag.Products = _dbContextProduct.Products.Where(x => x.CategoryId == 5).ToList();
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 5).ToList();
 
             return View();
         }

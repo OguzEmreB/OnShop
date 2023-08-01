@@ -48,7 +48,7 @@
                                 <td style="vertical-align: middle;">@item.ProductName</td>
                                 <td style ="vertical-align: middle;">@item.ProductId</td>
                                 <td style="vertical-align: middle;">@item.Quantity</td>
-                                <td style="vertical-align: middle;">@item.Price</td>
+                                <td style="vertical-align: middle;"> @string.Format("{0:0}", @item.Price) $</td>
                                 <td style="vertical-align: middle;">@item.StockStatus</td>
                                 <td>
                                     @if (!string.IsNullOrEmpty(@item.ImageUrl))
@@ -76,7 +76,7 @@
                 </table>
 
                 <div class="text-center mt-3">
-                    <h3>Total Price: @ViewBag.TotalPrice</h3>
+                    <h3>Total Price:  @string.Format("{0:0}", @ViewBag.TotalPrice) $</h3>
                 </div>
 
                 <div class="text-center mt-3">

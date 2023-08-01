@@ -8,14 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
  
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddDbContext<OnShopContext>(option => option.UseSqlServer(
-
-    builder.Configuration.GetConnectionString("DefaultConnection")
-    )); // Ürünler
-
-
-
+ 
 
 builder.Services.AddDbContext<OnShopDBContext>(option => option.UseSqlServer(
 

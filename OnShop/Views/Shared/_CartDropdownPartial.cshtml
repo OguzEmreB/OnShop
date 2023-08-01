@@ -14,12 +14,11 @@
                     {
                         <li>
                             <a href="@Url.Action("CartItemDetails", "ShoppingCart", new { id = ViewBag.CartProductIds[i] })">
-                                @ViewBag.CartProductNames[i] - x @ViewBag.CartProductQuantities[i] - @ViewBag.CartProductPrices[i]
+                                @ViewBag.CartProductNames[i] - x @ViewBag.CartProductQuantities[i] - @string.Format("{0:0.0}",@ViewBag.CartProductPrices[i]) $
                             </a>
                         </li>
                     }
-                    <a>Total Price:@ViewBag.TotalPrice </a>
-
+                    <a>Total Price: @string.Format("{0:0.0}", @ViewBag.TotalPrice) $</a>
                 }
             </ul>
         </li>
