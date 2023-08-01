@@ -97,6 +97,24 @@ namespace OnShop.Controllers
 
             return View();
         }
+        public IActionResult HomeGarden()
+        {
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 6).ToList();
+            return View();
+        }
+        public IActionResult Accessories()
+        {
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 7).ToList();
+            return View();
+        }
+        public IActionResult Tools()
+        {
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 8).ToList();
+            return View();
+        }
+      
 
 
 

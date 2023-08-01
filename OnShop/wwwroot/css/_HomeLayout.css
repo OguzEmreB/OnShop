@@ -29,8 +29,8 @@ body {
 
 .sol {
     text-align: center;
-    background-color: #1c2937;  
-    width: 200px;
+    background-color: #1c2937;
+    width: 130px;
     height: 70px;
     display: flex;
     align-items: center;
@@ -46,39 +46,62 @@ body {
     }
 
 .orta {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: auto;
     list-style: none;
     background-color: #1c2937;
+    align-items: center;
+}
+.search-container {
+    width: 80%;
     flex: 1;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;  
+    position: relative;
 }
-.search-container{
-   
-}
-.search-container input {
-    width: 300px;  
-    padding: 5px;
-}
+    .search-container input {
+        margin-left:40px;
+        flex: 1;
+        padding: 5px;
+        width: 70%;
+    }
 .user-container {
     color: #ff6a00;
+    width: 250px;
     font-size: 16px;
     float: right;
- 
 }
 .user-tabs {
+    flex: 1;
+    display: flex;
+    justify-content: center;
     list-style: none;
+    margin-left: 0px;
+   
 }
-    .user-container a {
-        color: #ff6a00;
+.user-container a {
+    padding: 20px;
+    color: #fff;
+    background-color: #1c2937;
+    color: #ff6a00;
+    font-size: 16px;
+}
+
+.login {
+    text-align: right;
+    background-color: #1c252f;
+    width: 15%;
+}
+
+    .login a {
+        color: #FFF;
         font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        list-style: none;
     }
-
-
-
-
-
 .menu {
    
     margin-top: 70px; 
@@ -93,26 +116,25 @@ body {
     align-items: center;
 }
 .orta-2 {
-      
+
     flex: 1;
     display: flex;
-    justify-content: space-between;  
-    align-items: center;  
+    justify-content: center;  
+    align-items: center;
     height: 45px;
     list-style: none;
-    background-color: #0f161e; 
-   
+    background-color: #0f161e;
 }
 .ortaMenu {
-    position: relative;  
-   
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-   
+
     .ortaMenu li {
-        top: 5px;
-        color: #0f161e;
-        display: inline-block;
-        margin: 5px 5px 0; 
+        margin: 0 10px;
     }
 
         .ortaMenu li a {
@@ -122,6 +144,8 @@ body {
             text-transform: uppercase;
             padding: 5px 5px;
             display: inline-block;
+            padding: 10px 20px; 
+            border-radius: 5px;
         }
 
         .ortaMenu li .dropdown-menu {
@@ -191,20 +215,7 @@ body {
 }
 
  
-.sag {
-    text-align: right;
-    background-color: #1c252f; 
-    width: 200px;
-}
 
-    .sag a {
-        color: #FFF; 
-        font-size: 16px; 
-        text-decoration: none; 
-        text-transform: uppercase;  
-        padding: 5px 10px;  
-        list-style: none;  
-    }
 
 #icerik {
     min-height: 760px;
