@@ -1,15 +1,24 @@
 # OnShop
 ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/fad4467d-7dfe-4ecc-9614-f44df94212e2)
-![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/f066adb5-5987-471d-b5f6-90e670456c75)
-![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/5059a303-323d-4e9d-8a93-c64ca2d74755)
-![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/3ba7e49d-811d-41f8-ab69-955bdb963681)
-![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/fbee7938-c328-4846-97a7-bb75ba9bdcef)
-![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/0d60213e-e1be-45f7-8e69-0df080c831d2) 
-![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/ed691035-8424-4912-a8c0-6a8f7c04c66f)
-![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/abc66b27-092a-45b7-a644-5f3be52e3381)
+![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/b9c781a0-d20c-45d4-ad44-c4b40b513b76)
+ 
+![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/3b0fbd23-79fe-4fd4-8d3f-fc93a6a9c3b3)
+ 
+![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/d3b86edf-d8b4-4d1d-822f-b0175a2dc8df)
+ 
+![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/2bbc6239-2316-4d73-81bf-54d3ca558cb1)
+ 
+![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/8cb3ce3b-d7a1-4115-b355-eff92435a5c5)
+  
+ 
+![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/fbcaac6f-5759-4376-8db3-b35bef7ea4c7)
+ 
+ 
 ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/4d095991-09df-4c4d-884c-81c49fbb8ca7)
  
-![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/31b2561e-77fd-4870-886c-be48e61c4d1f)
+![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/d5ab3839-5dc8-454d-b97b-b1a51dc1c61b)
+ 
+ 
 
 ![resim](https://github.com/OguzEmreB/OnShop-Core-7-MVC-SQL/assets/64134385/c688936f-5537-4afb-99e9-0229db8ef11c)
 
