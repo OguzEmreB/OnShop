@@ -16,7 +16,7 @@ public class AddProductViewModel
 
     public List<SelectListItem> Categories { get; set; }
 
-    // Properties to hold data from UserProducts and Products
+  
     public AddProductViewModel()
     {
       

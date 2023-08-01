@@ -24,7 +24,7 @@ namespace OnShop.Controllers
         public ProductController(OnShopDBContext dbContext, UserManager<ApplicationUser> userManager)
             : base(dbContext, userManager)
         {
-
+              
              
             _userManager = userManager;
             _dbContext = dbContext;
@@ -284,9 +284,7 @@ namespace OnShop.Controllers
 
             if (ModelState.IsValid)
             {
-                // Find the existing UserProduct entity in the database based on UserProductsId
-             
-                // Update the properties of the existing UserProduct entity
+                
                
                 if (userProduct != null)
                 {
@@ -302,7 +300,7 @@ namespace OnShop.Controllers
 
                     UpdateCart( );
 
-                    // Save changes to the database
+                 
                     _dbContext.SaveChanges();
                 }
 
