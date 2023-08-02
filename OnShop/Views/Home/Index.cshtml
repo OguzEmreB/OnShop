@@ -2,13 +2,14 @@
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
+
+
  
 
-<link href="~/css/index.css" rel="stylesheet" />
-<style>
- 
-  
+
+@*<style>
+
+
     .container {
         min-width: 900px;
         width: 100%;
@@ -18,12 +19,12 @@
     }
 
     .right {
-       
+
         width: 250px;
         height: 1750px;
         background-color: #1c252f;
-       
-       
+
+
     }
 
 
@@ -42,10 +43,10 @@
          flex:1;
         min-width: 800px;
         height: 250px;
-       
+
         flex-direction: row;
         align-items: center;
-      
+
     }
 
         .left_1 img {
@@ -84,15 +85,15 @@
             width: 200px;
             height: 90%;
             border-radius: 10%;
-          
+
         }
 
-   
+
 </style>
 
 <div class="container">
     <div class="left_0">
-      
+
         <a href="/Home/ClothingShoes">
         <div class="left_1">
             <img src="/Tshirts/Tshirt7.jpeg">
@@ -120,38 +121,38 @@
  <div class="right">
 
 
-  
+
         <div class="product-card">
             <img src="/shoes/shoe1.jpeg" alt="Product 1">
-           
+
         </div>
         <div class="product-card">
             <img src="/shoes/shoe2.jpeg" alt="Product 2">
-             
+
         </div>
         <div class="product-card">
             <img src="/shoes/shoe3.jpeg" alt="Product 3">
-           
+
         </div>
         <div class="product-card">
             <img src="/shoes/shoe4.jpeg" alt="Product 4">
-           
+
         </div>
         <div class="product-card">
             <img src="/shoes/shoe5.jpeg" alt="Product 5">
-            
+
         </div>
         <div class="product-card">
             <img src="/shoes/shoe6.jpeg" alt="Product 6">
-          
+
         </div>
         <div class="product-card">
             <img src="/shoes/shoe7.jpeg" alt="Product 7">
-          
+
         </div>
         <div class="product-card">
             <img src="/shoes/shoe8.jpeg" alt="Product 8">
-           
+
         </div>
     </div>
     </a>
@@ -179,6 +180,218 @@
         }
 
         slideProducts();
-    </script>
- 
- 
+    </script>*@
+
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+
+
+<style>
+
+    .body {
+        display: flex;
+        flex: auto;
+        height: 800px;
+        background-color: #1c2937;
+    }
+
+    .container {
+        margin-top: 30px;
+        width: 100%;
+        height: 750px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        border: 4px solid #ff6a00;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-display {
+         
+        flex: 1;
+        text-align: center;
+        width: 100%;
+        max-height: 600px;
+        background-image: url('/images/hb3.png');  
+        background-size: cover; 
+        background-position: center;  
+        background-repeat: no-repeat;
+        background-position: 30px center;
+
+    }
+
+        .image-display img {
+            flex: auto;
+            margin-top: 55px;
+            float: right;
+            width: 50%;
+            max-height: 400px;
+            max-width: 750px;
+            object-fit: contain;
+            background-size: contain;
+        }
+
+    .header {
+        width: 100%;
+        text-align: center;
+    }
+
+        .header li {
+            width: 100%;
+            /* Yazıların kapladığı alanı blok şeklinde yapar */
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 30px;
+            text-align: center;
+        }
+
+
+        .header nav ul {
+            flex: auto;
+            align-items: center;
+            height: 50px;
+            width: 100%;
+            background-color: #ff6a00;
+            display: block;
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+    .product-list {
+        display: flex;
+        gap: 30px;
+    }
+
+    .product {
+        flex: auto;
+        justify-content: center;
+        min-width: 100px;
+        width: calc(100% / 6 - 10px);
+        height: 100px;
+        background-color: #FFF;
+        cursor: pointer;
+    }
+
+        .product img {
+            width: 100%;
+            max-width: 100px;
+            height: 100%;
+            object-fit: contain;
+        }
+
+</style>
+
+<div class="body">
+
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul>
+                    <li onclick="changeCategory('Shoes')">Shoes</li>
+                    <li onclick="changeCategory('Tshirts')">Tshirts</li>
+                    <li onclick="changeCategory('Computer')">Computer</li>
+                    <li onclick="changeCategory('HG')">Home&garden</li>
+                    <li onclick="changeCategory('Tools')">Tools</li>
+                    <!-- Add more category headings here -->
+                </ul>
+            </nav>
+        </div>
+        <div class="image-display">
+            <img id="displayed-image" src="" alt="Product Photo">
+        </div>
+        <div class="product-list">
+            <div class="product" onclick="showProductImage('/shoes/shoe3.png')">       <img src="/shoes/shoe3.png" >      </div>
+            <div class="product" onclick="showProductImage('/shoes/shoe4.png')">       <img src="/shoes/shoe4.png">      </div>
+           
+            <div class="product" onclick="showProductImage('/shoes/shoe6.png')">       <img src="/shoes/shoe6.png">      </div>
+            <div class="product" onclick="showProductImage('/shoes/shoe7.png')">       <img src="/shoes/shoe7.png">      </div>
+            <div class="product" onclick="showProductImage('/shoes/shoe8.png')">       <img src="/shoes/shoe8.png">      </div>
+            <!-- Add more products for each category here -->
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+
+    window.onload = function () {
+        // Başlangıçta monitor fotoğrafını göstermek için showProductImage fonksiyonunu çağırıyoruz.
+        showProductImage('/shoes/shoe3.png');
+    };
+
+    function changeCategory(category) {
+        // Replace the product list content based on the selected category
+        const productContainer = document.querySelector(".product-list");
+        let products = "";
+        if (category === "Shoes") {
+            products = `
+                        <div class="product" onclick="showProductImage('/shoes/shoe3.png')">                   <img src="/shoes/shoe3.png">      </div>
+                                <div class="product" onclick="showProductImage('/shoes/shoe4.png')">       <img src="/shoes/shoe4.png">      </div>
+                                    
+                                    <div class="product" onclick="showProductImage('/shoes/shoe6.png')">       <img src="/shoes/shoe6.png">      </div>
+                                    <div class="product" onclick="showProductImage('/shoes/shoe7.png')">       <img src="/shoes/shoe7.png">      </div>
+                                    <div class="product" onclick="showProductImage('/shoes/shoe8.png')">       <img src="/shoes/shoe8.png">      </div>
+    <!-- Add more products for Giyim category here -->
+        `;
+        } else if (category === "Tshirts") {
+            products = `
+          <div class="product" onclick="showProductImage('/Tshirts/Tshirt4.png')">  <img src="/Tshirts/Tshirt4.png">   </div>
+          <div class="product" onclick="showProductImage('/Tshirts/Tshirt5.png')">  <img src="/Tshirts/Tshirt5.png">   </div>
+          <div class="product" onclick="showProductImage('/Tshirts/Tshirt6.png')">  <img src="/Tshirts/Tshirt6.png">   </div>
+          <div class="product" onclick="showProductImage('/Tshirts/Tshirt7.png')">  <img src="/Tshirts/Tshirt7.png">   </div>
+          <div class="product" onclick="showProductImage('/Tshirts/Tshirt8.png')">  <img src="/Tshirts/Tshirt8.png">   </div>
+
+
+            <!-- Add more products for Tools category here -->
+                `;
+        }
+      else if (category === "Tools") {
+        products = `
+                    <div class="product" onclick="showProductImage('/tools/drill1.png')">        <img src="/Tools/drill1.png">        </div>
+                    <div class="product" onclick="showProductImage('/tools/screwdriver1.png')">  <img src="/Tools/screwdriver1.png">  </div>
+                        <div class="product" onclick="showProductImage('/tools/pliers1.png')">  <img src="/Tools/pliers1.png">  </div>
+        <!-- Add more products for Tools category here -->
+            `;
+    }
+    else if (category === "HG") {
+        products = `
+                    <div class="product" onclick="showProductImage('/hg/chair1.png')">  <img src="/hg/chair1.png">        </div>
+                                <div class="product" onclick="showProductImage('/hg/sofa2.png')">  <img src="/hg/sofa2.png">        </div>
+                            <div class="product" onclick="showProductImage('/hg/washingmachine1.png')">  <img src="/hg/washingmachine1.png">        </div>
+        <!-- Add more products for Tools category here -->
+            `;
+    }
+    else if (category === "Computer") {
+        products = `
+                <div class="product" onclick="showProductImage('/Monitors/Monitor1.png')">             <img src="/Monitors/Monitor1.png">        </div>
+               <div class="product" onclick="showProductImage('/Monitors/Monitor2.png')">          <img src="/Monitors/Monitor2.png">        </div>
+                <div class="product" onclick="showProductImage('/Keyboards/Keyboard1.png')">         <img src="/Keyboards/Keyboard1.png">        </div>
+                <div class="product" onclick="showProductImage('/Mouse/Mouse2.png')">         <img src="/Mouse/Mouse2.png">        </div>
+        <!-- Add more products for Tools category here -->
+            `;
+    }
+
+    productContainer.innerHTML = products;
+    }
+
+    function showProductImage(src) {
+        const imageDisplay = document.getElementById("displayed-image");
+        imageDisplay.src = src;
+        imageDisplay.style.display = "block";
+    }
+
+</script>

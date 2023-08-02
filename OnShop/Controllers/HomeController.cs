@@ -30,7 +30,7 @@ namespace OnShop.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            ViewData["UserID"] = _userManager.GetUserId(this.User);
+            //ViewData["UserID"] = _userManager.GetUserId(this.User);
             PopulateCartProductData();
 
             return View();
