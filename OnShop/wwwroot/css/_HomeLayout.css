@@ -219,8 +219,7 @@ body {
 
 
 #icerik {
-    display: flex;
-    flex: 1;
+
     min-height: 760px;
     width: 100%;
     overflow-x: hidden;
@@ -234,7 +233,7 @@ body {
     width: 100%;
     text-align: center;
     background-color: #FFF;
-    flex: 1;
+  
 }
 
 #footer {
