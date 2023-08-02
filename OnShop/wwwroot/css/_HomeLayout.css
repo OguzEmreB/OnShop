@@ -135,6 +135,7 @@ body {
 
     .ortaMenu li {
         margin: 0 10px;
+        list-style-type: none;
     }
 
         .ortaMenu li a {
@@ -214,33 +215,35 @@ body {
     display: block;
 }
 
- 
+
 
 
 #icerik {
+    display: flex;
+    flex: 1;
     min-height: 760px;
     width: 100%;
     overflow-x: hidden;
-    margin-top: 50px;
+    margin-top: 65px;
     background-color: #f3f3f3;
-    height: auto;
 }
 
 .post {
     min-height: 760px;
-    margin-bottom: 20px;
+    margin-top: 30px;
     width: 100%;
-    margin-top: 35px;
     text-align: center;
     background-color: #FFF;
+    flex: 1;
 }
 
 #footer {
-    background-color: #1c2937;
-    margin: auto;
+    background-color: #1c252f;
+    display: flex;
     width: 1200px;
-    height: 45px;
+    height: 35px;
     z-index: 1;
-    text-align: center;
-    display: block;
+    justify-content: center;
+    align-items: center;
 }
+ 

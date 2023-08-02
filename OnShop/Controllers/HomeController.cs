@@ -97,6 +97,29 @@ namespace OnShop.Controllers
 
             return View();
         }
+
+        public IActionResult Computer()
+        {
+
+
+            PopulateCartProductData();
+
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 3 || x.CategoryId == 4 || x.CategoryId == 5).ToList();
+
+            return View();
+        }
+        public IActionResult ClothingShoes()
+        {
+
+
+            PopulateCartProductData();
+
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 1 || x.CategoryId == 2).ToList();
+
+            return View();
+        }
         public IActionResult HomeGarden()
         {
             ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 6).ToList();

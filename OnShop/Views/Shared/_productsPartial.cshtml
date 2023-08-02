@@ -6,7 +6,6 @@
     .product-grid {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
     }
 
     .product-item {
@@ -15,33 +14,30 @@
         border: 1px solid black;
         padding: 10px;
         margin: 10px;
-        display: flex;  
-        flex-direction: column; 
-        justify-content: space-between; 
-        position: relative;  
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
     }
 
     .product-image {
-       
         height: 200px;
         object-fit: contain;
     }
 
     .product-details {
         text-align: center;
-        height:250px;
-        word-wrap: break-word;
-        
+        height: 250px;
     }
 
     .addButton {
-        position: absolute;  
-        bottom: 10px;  
-        left: 50%; 
-        
-  
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
     }
-</style> 
+</style>
+
 <div class="product-grid">
     @foreach (var product in ViewBag.Products)
     {
@@ -72,38 +68,3 @@
         </div>
     }
 </div>
-<style>
-    .product-grid {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .product-item {
-        width: 250px;
-        height: 450px;
-        border: 1px solid black;
-        padding: 10px;
-        margin: 10px;
-        display: flex; 
-        flex-direction: column; 
-        justify-content: space-between;  
-        position: relative; 
-    }
-
-    .product-image {
-        height: 200px;
-        object-fit: contain;
-    }
-
-    .product-details {
-        text-align: center;
-        height: 250px;
-    }
-
-    .addButton {
-        position: absolute;  
-        bottom: 10px;  
-        left: 50%;  
-        transform: translateX(-50%); 
-    }
-</style>

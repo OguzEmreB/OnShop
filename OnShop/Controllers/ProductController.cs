@@ -170,7 +170,7 @@ namespace OnShop.Controllers
                             p.Description.Contains(searchTerm))
                 .ToList();
             ViewBag.SearchTerm = searchTerm;
-            ViewBag.Products = products; // Set the ViewBag.Products property
+            ViewBag.Products = products;  
 
             return View();
         }

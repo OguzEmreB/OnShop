@@ -1,11 +1,178 @@
-﻿ 
-@{
+﻿@{
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+ 
  
 
-<h2 style="margin-top: 65px;">User Id: @ViewData["UserID"]</h2>
+<link href="~/css/index.css" rel="stylesheet" />
+<style>
  
+  
+    .container {
+        width: 100%;
+        height: 760px;
+        display: flex;
+        overflow: hidden;
+    }
 
+    .right {
+       
+        width: 250px;
+        height: 1750px;
+        background-color: #1c252f;
+       
+       
+    }
+
+
+    .left_0 {
+        margin-top:20px;
+        width: 100%;
+        height: 760px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .left_1 .left_2 .left_3 {
+        width: 100%;
+        height: 250px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      
+    }
+
+        .left_1 img {
+            width: 33%;
+        max-height: 245px;
+            justify-content: center;
+            object-fit: contain;
+        }
+
+
+
+    .left_2 img {
+        width: 33%;
+        max-height: 245px;
+        justify-content: center;
+        object-fit: contain;
+    }
+
+    .left_3 img {
+        width: 33%;
+        max-height: 245px;
+        justify-content: center;
+        object-fit: contain;
+    }
+
+
+
+    .product-card {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        transition: transform 1s;
+    }
+
+        .product-card img {
+            width: 200px;
+            height: 90%;
+            border-radius: 10%;
+          
+        }
+
+   
+</style>
+
+<div class="container">
+    <div class="left_0">
+        <a href="/Home/Computer">
+        <div class="left_1">
+             <img src="/Monitors/monitor1.jpeg">
+             <img src="/keyboards/keyboard1.jpeg">
+            <img src="/mouse/mouse1.jpeg">
+        </div>
+        </a>
+        <a href="/Home/ClothingShoes">
+        <div class="left_2">
+            <img src="/Tshirts/Tshirt7.jpeg">
+            <img src="/Shoes/Shoe8.jpeg">
+            <img src="/Tshirts/Tshirt8.jpeg">
+        </div>
+        </a>
+        <div class="left_3">
+            <img src="/Monitors/monitor1.jpeg">
+            <img src="/keyboards/keyboard1.jpeg">
+            <img src="/mouse/mouse1.jpeg">
+        </div>
+
+
+    </div>
+    <a href="/Home/Shoes">
+ <div class="right">
+
+
+  
+        <div class="product-card">
+            <img src="/shoes/shoe1.jpeg" alt="Product 1">
+           
+        </div>
+        <div class="product-card">
+            <img src="/shoes/shoe2.jpeg" alt="Product 2">
+             
+        </div>
+        <div class="product-card">
+            <img src="/shoes/shoe3.jpeg" alt="Product 3">
+           
+        </div>
+        <div class="product-card">
+            <img src="/shoes/shoe4.jpeg" alt="Product 4">
+           
+        </div>
+        <div class="product-card">
+            <img src="/shoes/shoe5.jpeg" alt="Product 5">
+            
+        </div>
+        <div class="product-card">
+            <img src="/shoes/shoe6.jpeg" alt="Product 6">
+          
+        </div>
+        <div class="product-card">
+            <img src="/shoes/shoe7.jpeg" alt="Product 7">
+          
+        </div>
+        <div class="product-card">
+            <img src="/shoes/shoe8.jpeg" alt="Product 8">
+           
+        </div>
+    </div>
+    </a>
+</div>
+    <script>
+        function slideProducts() {
+            const container = document.querySelector(".right");
+            const cards = document.querySelectorAll(".product-card");
+            const cardHeight = cards[0].offsetHeight;
+            const slideDuration = 1000;
+            const waitDuration = 2000;
+            let currentIndex = 0;
+
+            container.style.transition = `transform ${slideDuration}ms ease-in-out`;
+
+            function animateCards() {
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % cards.length;
+                    container.style.transform = `translateY(-${currentIndex   /2    * cardHeight}px)`;
+                    animateCards();
+                }, waitDuration + slideDuration);
+            }
+
+            animateCards();
+        }
+
+        slideProducts();
+    </script>
+ 
+ 

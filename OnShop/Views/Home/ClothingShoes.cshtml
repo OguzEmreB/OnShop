@@ -1,13 +1,12 @@
-﻿ 
+﻿
 @{
-    ViewData["Title"] = "Shoes";
- 
+    ViewData["Title"] = " Clothing & Shoes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
-<h1 style="background-color: #0f161e; color: #FFF; display: inline-block;">
-    Shoes
+
+<h1 style="background-color: #0f161e; color: #FFF; display: inline-block; padding: 5px;">
+    Clothing & Shoes
 </h1>
- 
 
 @await Html.PartialAsync("_productsPartial", "ViewBag.Products")
 

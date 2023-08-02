@@ -1,0 +1,7 @@
+/* Card animasyonlarý */
+@keyframes customFadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
