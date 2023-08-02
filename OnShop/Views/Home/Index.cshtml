@@ -247,7 +247,7 @@
 
         .header li {
             width: 100%;
-            /* Yazıların kapladığı alanı blok şeklinde yapar */
+          
             color: white;
             font-weight: bold;
             font-size: 18px;
@@ -304,7 +304,7 @@
                     <li onclick="changeCategory('Computer')">Computer</li>
                     <li onclick="changeCategory('HG')">Home&garden</li>
                     <li onclick="changeCategory('Tools')">Tools</li>
-                    <!-- Add more category headings here -->
+                  
                 </ul>
             </nav>
         </div>
@@ -318,7 +318,7 @@
             <div class="product" onclick="showProductImage('/shoes/shoe6.png')">       <img src="/shoes/shoe6.png">      </div>
             <div class="product" onclick="showProductImage('/shoes/shoe7.png')">       <img src="/shoes/shoe7.png">      </div>
             <div class="product" onclick="showProductImage('/shoes/shoe8.png')">       <img src="/shoes/shoe8.png">      </div>
-            <!-- Add more products for each category here -->
+          
         </div>
     </div>
 
@@ -329,12 +329,12 @@
 <script>
 
     window.onload = function () {
-        // Başlangıçta monitor fotoğrafını göstermek için showProductImage fonksiyonunu çağırıyoruz.
+      
         showProductImage('/shoes/shoe3.png');
     };
 
     function changeCategory(category) {
-        // Replace the product list content based on the selected category
+      
         const productContainer = document.querySelector(".product-list");
         let products = "";
         if (category === "Shoes") {
