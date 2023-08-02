@@ -20,12 +20,9 @@
  
 ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/a63ff9ec-8ef9-4976-8354-7b5828aa4d23)
  
+![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/7faf2706-9b69-4b56-a768-a641bcda4a6d)
  
 ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/3868117e-34e0-40cf-a266-034c94dafd59)
- 
-  
- 
-![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/fbcaac6f-5759-4376-8db3-b35bef7ea4c7)
  
  
 ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/4d095991-09df-4c4d-884c-81c49fbb8ca7)
