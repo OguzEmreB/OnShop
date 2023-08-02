@@ -63,6 +63,7 @@ namespace OnShop.Controllers
         [HttpGet]
         public IActionResult YourProducts()
         {
+            PopulateCartProductData();
             PopulateUserProductData();
             var userProducts = GetUserProducts();
 
@@ -164,6 +165,8 @@ namespace OnShop.Controllers
         [HttpGet]
         public IActionResult ProductSearch(string searchTerm)
         {
+
+            PopulateCartProductData();
             var products = _dbContext.Products
                 .Where(p => p.ProductName.Contains(searchTerm) ||
                             p.CategoryName.Contains(searchTerm) ||
@@ -177,6 +180,8 @@ namespace OnShop.Controllers
         [HttpGet]
         public IActionResult AddProduct()
         {
+
+            PopulateCartProductData();
             var categories = _dbContext.Categories
                 .Select(p => new SelectListItem { Value = p.CategoryId.ToString(), Text = p.CategoryName })
                 .ToList();
@@ -251,6 +256,7 @@ namespace OnShop.Controllers
        
         public IActionResult EditProduct(int ProductId)
         {
+            PopulateCartProductData();
             var userId = _userManager.GetUserId(User);
             var user = _userManager.FindByIdAsync(userId).Result;
     

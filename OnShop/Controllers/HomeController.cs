@@ -155,35 +155,41 @@ namespace OnShop.Controllers
         }
         public IActionResult HomeGarden()
         {
+            PopulateCartProductData();
             ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 6 || x.CategoryId == 7 || x.CategoryId == 8).ToList();
             return View();
         }
         public IActionResult Accessories()
         {
+            PopulateCartProductData();
 
             ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 7).ToList();
             return View();
         }
         public IActionResult Tools()
         {
+            PopulateCartProductData();
 
             ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 9 || x.CategoryId == 10 || x.CategoryId == 11).ToList();
             return View();
         }
         public IActionResult Pliers()
         {
+            PopulateCartProductData();
 
             ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 9).ToList();
             return View();
         }
         public IActionResult Screwdrivers()
         {
+            PopulateCartProductData();
 
             ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 10).ToList();
             return View();
         }
         public IActionResult Drills()
         {
+            PopulateCartProductData();
 
             ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 11).ToList();
             return View();
