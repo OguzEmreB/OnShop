@@ -29,13 +29,14 @@
             
             @if (ViewBag.ProductsInCart != null )
             {
-                <table class="table table-striped table-bordered" style="width: 650px; margin: 20px auto 0;">
+                <table class="table table-striped table-bordered" style="width: 760px; margin: 20px auto 0;">
                     <thead>
                         <tr>
                             <th style="text-align: center;">ProductName</th>
                             <th style="text-align: center;">Product Id</th>
                             <th style="text-align: center;">Quantity</th>
                             <th style="text-align: center;">Price</th>
+                            <th style="text-align: center;">Description</th>
                             <th style="text-align: center;">Status</th>
                             <th style="text-align: center;">Image</th>
                             <th style="text-align: center;">Actions</th>
@@ -49,6 +50,7 @@
                                 <td style ="vertical-align: middle;">@item.ProductId</td>
                                 <td style="vertical-align: middle;">@item.Quantity</td>
                                 <td style="vertical-align: middle;"> @string.Format("{0:0}", @item.Price) $</td>
+                                <td style="vertical-align: middle;"> @(item.Description?.Length > 30 ? item.Description.Substring(0, 20) + "..." : item.Description)</td>
                                 <td style="vertical-align: middle;">@item.StockStatus</td>
                                 <td>
                                     @if (!string.IsNullOrEmpty(@item.ImageUrl))

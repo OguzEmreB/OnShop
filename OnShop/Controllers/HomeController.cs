@@ -120,9 +120,42 @@ namespace OnShop.Controllers
 
             return View();
         }
+        public IActionResult Chairs()
+        {
+
+
+            PopulateCartProductData();
+
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 6 ).ToList();
+
+            return View();
+        }
+        public IActionResult Sofas()
+        {
+
+
+            PopulateCartProductData();
+
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 7).ToList();
+
+            return View();
+        }
+        public IActionResult WhiteGoods()
+        {
+
+
+            PopulateCartProductData();
+
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 8).ToList();
+
+            return View();
+        }
         public IActionResult HomeGarden()
         {
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 6).ToList();
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 6 || x.CategoryId == 7 || x.CategoryId == 8).ToList();
             return View();
         }
         public IActionResult Accessories()
@@ -134,10 +167,28 @@ namespace OnShop.Controllers
         public IActionResult Tools()
         {
 
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 8).ToList();
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 9 || x.CategoryId == 10 || x.CategoryId == 11).ToList();
             return View();
         }
-      
+        public IActionResult Pliers()
+        {
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 9).ToList();
+            return View();
+        }
+        public IActionResult Screwdrivers()
+        {
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 10).ToList();
+            return View();
+        }
+        public IActionResult Drills()
+        {
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 11).ToList();
+            return View();
+        }
+
 
 
 

@@ -18,6 +18,7 @@ public class ShoppingCart
 
     public int Quantity { get; set; }
     public string? StockStatus { get; set; }
+    public string? Description { get; set; }
 
 
     public ApplicationUser ApplicationUser { get; set; }

@@ -221,6 +221,7 @@ body {
 #icerik {
 
     min-height: 760px;
+    min-width:400px;
     width: 100%;
     overflow-x: hidden;
     margin-top: 65px;
@@ -229,11 +230,11 @@ body {
 
 .post {
     min-height: 760px;
+    min-width: 400px;
     margin-top: 30px;
     width: 100%;
     text-align: center;
     background-color: #FFF;
-  
 }
 
 #footer {

@@ -109,22 +109,21 @@ namespace OnShop.Controllers
 
             foreach (var cartProduct in productsInCart)
             {
-               
                 var product = _dbContext.Products.FirstOrDefault(p => p.ProductId == cartProduct.ProductId);
 
                 if (product != null)
-                { 
+                {
                     cartProduct.ProductName = product.ProductName;
                     cartProduct.Price = product.Price;
-
+                    cartProduct.Description = product.Description;
+                    cartProduct.ImageUrl = product.ImageUrl;
+                    
  
                 }
             }
 
             _dbContext.SaveChanges();
-             
         }
-
 
 
 

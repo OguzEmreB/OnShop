@@ -10,6 +10,7 @@
  
   
     .container {
+        min-width: 900px;
         width: 100%;
         height: 760px;
         display: flex;
@@ -28,6 +29,7 @@
 
     .left_0 {
         margin-top:20px;
+        min-width: 800px;
         width: 100%;
         height: 760px;
         display: flex;
@@ -36,9 +38,11 @@
     }
 
     .left_1 .left_2 .left_3 {
-        width: 100%;
-        height: 250px;
         display: flex;
+         flex:1;
+        min-width: 800px;
+        height: 250px;
+       
         flex-direction: row;
         align-items: center;
       
@@ -88,26 +92,28 @@
 
 <div class="container">
     <div class="left_0">
-        <a href="/Home/Computer">
-        <div class="left_1">
-             <img src="/Monitors/monitor1.jpeg">
-             <img src="/keyboards/keyboard1.jpeg">
-            <img src="/mouse/mouse1.jpeg">
-        </div>
-        </a>
+      
         <a href="/Home/ClothingShoes">
-        <div class="left_2">
+        <div class="left_1">
             <img src="/Tshirts/Tshirt7.jpeg">
             <img src="/Shoes/Shoe8.jpeg">
             <img src="/Tshirts/Tshirt8.jpeg">
         </div>
         </a>
+        <a href="/Home/HomeGarden">
+            <div class="left_2">
+                <img src="/HG/hg1.jpeg">
+                <img src="/HG/hg2.jpeg">
+                <img src="/HG/hg3.jpeg">
+            </div>
+        </a>
+        <a href="/Home/Tools">
         <div class="left_3">
-            <img src="/Monitors/monitor1.jpeg">
-            <img src="/keyboards/keyboard1.jpeg">
-            <img src="/mouse/mouse1.jpeg">
+            <img src="/tools/drill1.jpeg">
+            <img src="/tools/screwdriver1.jpeg">
+            <img src="/tools/pliers1.jpeg">
         </div>
-
+        </a>
 
     </div>
     <a href="/Home/Shoes">

@@ -88,7 +88,9 @@ public class ShoppingCartController : BaseController
                 ProductName = productToAdd.ProductName, 
                 Price=productToAdd.Price, 
                 Quantity = quantity,
-                ImageUrl = productToAdd.ImageUrl
+                Description = productToAdd.Description,
+                ImageUrl = productToAdd.ImageUrl,
+                 
             };
             user.ShoppingCart.Add(shoppingCartItem);
         } 
