@@ -1,5 +1,8 @@
 # OnShop
 ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/fad4467d-7dfe-4ecc-9614-f44df94212e2)
+![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/5cc7263c-6aca-4db1-9a94-0a7d5ccba4ee)
+![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/2496f1c4-d034-416d-93a6-b63fe5502bdb)
+
 ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/b9c781a0-d20c-45d4-ad44-c4b40b513b76)
  
 ![resim](https://github.com/OguzEmreB/OnShop/assets/64134385/3b0fbd23-79fe-4fd4-8d3f-fc93a6a9c3b3)
