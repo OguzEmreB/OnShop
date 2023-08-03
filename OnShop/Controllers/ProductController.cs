@@ -77,10 +77,10 @@ namespace OnShop.Controllers
         {
             List<UserProducts> userProducts = GetUserProducts();
 
-            List<int> userProductIds = new List<int>();
-            List<string> userProductNames = new List<string>();
-            List<int> userProductQuantities = new List<int>();
-            List<decimal> userProductPrices = new List<decimal>();
+            var userProductIds = new List<int>();
+            var userProductNames = new List<string>();
+            var userProductQuantities = new List<int>();
+            var userProductPrices = new List<decimal>();
           
 
             foreach (var userProduct in userProducts)

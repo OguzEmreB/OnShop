@@ -66,10 +66,10 @@ namespace OnShop.Controllers
         {
             List<ShoppingCart> cartProducts = GetCartProducts();
 
-            List<int> cartProductIds = new List<int>();
-            List<string> cartProductNames = new List<string>();
-            List<int> cartProductQuantities = new List<int>();
-            List<decimal> cartProductPrices = new List<decimal>();
+            var cartProductIds = new List<int>();
+            var cartProductNames = new List<string>();
+            var cartProductQuantities = new List<int>();
+            var cartProductPrices = new List<decimal>();
             decimal TotalPrice = 0;
 
             foreach (var cartProduct in cartProducts)

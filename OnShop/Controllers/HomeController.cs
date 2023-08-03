@@ -10,12 +10,9 @@ namespace OnShop.Controllers
 {
    public class HomeController : BaseController
     {
-        private readonly UserManager<ApplicationUser> _userManager;  //
-        private readonly OnShopDBContext _dbContext;               //
-       
+        private readonly UserManager<ApplicationUser> _userManager; 
+        private readonly OnShopDBContext _dbContext;   
         private readonly ILogger<HomeController> _logger;
-        
-
         public HomeController(ILogger<HomeController> logger, OnShopDBContext dbContext, UserManager<ApplicationUser> userManager) 
             : base(dbContext, userManager)
         {
@@ -24,9 +21,6 @@ namespace OnShop.Controllers
             _userManager = userManager;
             _dbContext = dbContext;
         }
-
-
-
         [Authorize]
         public IActionResult Index()
         {
@@ -35,8 +29,6 @@ namespace OnShop.Controllers
 
             return View();
         }
-
-         
         public IActionResult Shoes()
         {
 
@@ -58,9 +50,6 @@ namespace OnShop.Controllers
 
             return View();
         }
-
-        
-        
         public IActionResult Monitors()
         {
 
@@ -72,7 +61,6 @@ namespace OnShop.Controllers
 
             return View();
         }
-       
         public IActionResult Keyboards()
         {
 
@@ -84,8 +72,6 @@ namespace OnShop.Controllers
 
             return View();
         }
-
-
         public IActionResult Mouse()
         {
 
@@ -97,7 +83,6 @@ namespace OnShop.Controllers
 
             return View();
         }
-
         public IActionResult Computer()
         {
 
@@ -153,6 +138,39 @@ namespace OnShop.Controllers
 
             return View();
         }
+        public IActionResult Hairbands()
+        {
+
+
+            PopulateCartProductData();
+
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 12).ToList();
+
+            return View();
+        }
+        public IActionResult Sunglasses()
+        {
+
+
+            PopulateCartProductData();
+
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 13).ToList();
+
+            return View();
+        }
+        public IActionResult Wallets()
+        {
+
+
+            PopulateCartProductData();
+
+
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 14).ToList();
+
+            return View();
+        }
         public IActionResult HomeGarden()
         {
             PopulateCartProductData();
@@ -162,8 +180,8 @@ namespace OnShop.Controllers
         public IActionResult Accessories()
         {
             PopulateCartProductData();
+            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 12 || x.CategoryId == 13 || x.CategoryId == 14).ToList();
 
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 7).ToList();
             return View();
         }
         public IActionResult Tools()
@@ -194,11 +212,6 @@ namespace OnShop.Controllers
             ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 11).ToList();
             return View();
         }
-
-
-
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -3,194 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
  
-
-
-@*<style>
-
-
-    .container {
-        min-width: 900px;
-        width: 100%;
-        height: 760px;
-        display: flex;
-        overflow: hidden;
-    }
-
-    .right {
-
-        width: 250px;
-        height: 1750px;
-        background-color: #1c252f;
-
-
-    }
-
-
-    .left_0 {
-        margin-top:20px;
-        min-width: 800px;
-        width: 100%;
-        height: 760px;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-    }
-
-    .left_1 .left_2 .left_3 {
-        display: flex;
-         flex:1;
-        min-width: 800px;
-        height: 250px;
-
-        flex-direction: row;
-        align-items: center;
-
-    }
-
-        .left_1 img {
-            width: 33%;
-        max-height: 245px;
-            justify-content: center;
-            object-fit: contain;
-        }
-
-
-
-    .left_2 img {
-        width: 33%;
-        max-height: 245px;
-        justify-content: center;
-        object-fit: contain;
-    }
-
-    .left_3 img {
-        width: 33%;
-        max-height: 245px;
-        justify-content: center;
-        object-fit: contain;
-    }
-
-
-
-    .product-card {
-        display: flex;
-        align-items: center;
-        padding: 20px;
-        transition: transform 1s;
-    }
-
-        .product-card img {
-            width: 200px;
-            height: 90%;
-            border-radius: 10%;
-
-        }
-
-
-</style>
-
-<div class="container">
-    <div class="left_0">
-
-        <a href="/Home/ClothingShoes">
-        <div class="left_1">
-            <img src="/Tshirts/Tshirt7.jpeg">
-            <img src="/Shoes/Shoe8.jpeg">
-            <img src="/Tshirts/Tshirt8.jpeg">
-        </div>
-        </a>
-        <a href="/Home/HomeGarden">
-            <div class="left_2">
-                <img src="/HG/hg1.jpeg">
-                <img src="/HG/hg2.jpeg">
-                <img src="/HG/hg3.jpeg">
-            </div>
-        </a>
-        <a href="/Home/Tools">
-        <div class="left_3">
-            <img src="/tools/drill1.jpeg">
-            <img src="/tools/screwdriver1.jpeg">
-            <img src="/tools/pliers1.jpeg">
-        </div>
-        </a>
-
-    </div>
-    <a href="/Home/Shoes">
- <div class="right">
-
-
-
-        <div class="product-card">
-            <img src="/shoes/shoe1.jpeg" alt="Product 1">
-
-        </div>
-        <div class="product-card">
-            <img src="/shoes/shoe2.jpeg" alt="Product 2">
-
-        </div>
-        <div class="product-card">
-            <img src="/shoes/shoe3.jpeg" alt="Product 3">
-
-        </div>
-        <div class="product-card">
-            <img src="/shoes/shoe4.jpeg" alt="Product 4">
-
-        </div>
-        <div class="product-card">
-            <img src="/shoes/shoe5.jpeg" alt="Product 5">
-
-        </div>
-        <div class="product-card">
-            <img src="/shoes/shoe6.jpeg" alt="Product 6">
-
-        </div>
-        <div class="product-card">
-            <img src="/shoes/shoe7.jpeg" alt="Product 7">
-
-        </div>
-        <div class="product-card">
-            <img src="/shoes/shoe8.jpeg" alt="Product 8">
-
-        </div>
-    </div>
-    </a>
-</div>
-    <script>
-        function slideProducts() {
-            const container = document.querySelector(".right");
-            const cards = document.querySelectorAll(".product-card");
-            const cardHeight = cards[0].offsetHeight;
-            const slideDuration = 1000;
-            const waitDuration = 2000;
-            let currentIndex = 0;
-
-            container.style.transition = `transform ${slideDuration}ms ease-in-out`;
-
-            function animateCards() {
-                setTimeout(() => {
-                    currentIndex = (currentIndex + 1) % cards.length;
-                    container.style.transform = `translateY(-${currentIndex   /2    * cardHeight}px)`;
-                    animateCards();
-                }, waitDuration + slideDuration);
-            }
-
-            animateCards();
-        }
-
-        slideProducts();
-    </script>*@
-
-@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
-@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
-@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
-@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
-@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
-@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
-@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
-
-
 <style>
 
     .body {
@@ -198,6 +11,7 @@
         flex: auto;
         height: 800px;
         background-color: #1c2937;
+        overflow: hidden;
     }
 
     .container {
@@ -207,9 +21,9 @@
         background-color: #fff;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        
         justify-content: center;
-        padding: 20px;
+        padding: 10px;
         border: 4px solid #ff6a00;
         border-radius: 10px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -225,10 +39,11 @@
         background-size: cover; 
         background-position: center;  
         background-repeat: no-repeat;
+        background-color: #090d33;  
+        box-shadow: 0px 0px 10px 3px #ff6a00;  
       
 
-    }
-
+    } 
         .image-display img {
             flex: auto;
             margin-top: 55px;
@@ -238,61 +53,66 @@
             max-width: 750px;
             object-fit: contain;
             background-size: contain;
-        }
 
+        } 
     .header {
+        height:80px;
         width: 100%;
-        text-align: center;
-    }
-
+        text-align: center; 
+        padding: 18px;
+        border-radius: 5px;
+        
+        box-shadow: inset 0 0 12px 12px white, inset 0 0 3px 2px white;
+        background: linear-gradient(to right, #090d33, #0d71a7);
+    } 
         .header li {
             width: 100%;
-          
-            color: white;
+            display: flex;
+            flex: auto;
+            color: #FFA500;
             font-weight: bold;
             font-size: 18px;
             padding: 30px;
+            justify-content: center;  
+            align-items: center; 
             text-align: center;
-        }
-
-
+            margin-bottom:10px;
+        } 
         .header nav ul {
             cursor: pointer;
-            flex: auto;
-            align-items: center;
+            flex: auto; 
             height: 50px;
-            width: 100%;
-            background-color: #ff6a00;
-            display: block;
+            width: 100%;  
+            text-align: center;  
             list-style: none;
             padding: 0;
             display: flex;
-            justify-content: space-around;
-        }
 
+            
+        } 
     .product-list {
         display: flex;
         gap: 30px;
-    }
-
+    } 
     .product {
+        margin-top:10px;
         flex: auto;
         justify-content: center;
-        min-width: 100px;
+        max-width:90%; 
         width: calc(100% / 6 - 10px);
-        height: 100px;
-        background-color: #FFF;
+        height: 70px;
+        background-color: #FFA500; 
+        box-shadow: 0px 0px 10px 2px #FFA07A; 
+        display: block;
         cursor: pointer;
-    }
-
+    } 
         .product img {
 
             width: 100%;
             max-width: 100px;
             height: 100%;
             object-fit: contain;
-        }
-
+        } 
 </style>
 
 <div class="body">
@@ -300,27 +120,24 @@
     <div class="container">
         <div class="header">
             <nav>
-                <ul>
+                <ul> 
                     <li onclick="changeCategory('Shoes')">Shoes</li>
                     <li onclick="changeCategory('Tshirts')">Tshirts</li>
                     <li onclick="changeCategory('Computer')">Computer</li>
                     <li onclick="changeCategory('HG')">Home&garden</li>
-                    <li onclick="changeCategory('Tools')">Tools</li>
-                  
+                    <li onclick="changeCategory('Tools')">Tools</li> 
                 </ul>
             </nav>
         </div>
         <div class="image-display">
             <img id="displayed-image" src="" alt="Product Photo">
         </div>
-        <div class="product-list">
-            <div class="product" onclick="showProductImage('/shoes/shoe3.png')">       <img src="/shoes/shoe3.png" >      </div>
-            <div class="product" onclick="showProductImage('/shoes/shoe4.png')">       <img src="/shoes/shoe4.png">      </div>
-           
-            <div class="product" onclick="showProductImage('/shoes/shoe6.png')">       <img src="/shoes/shoe6.png">      </div>
-            <div class="product" onclick="showProductImage('/shoes/shoe7.png')">       <img src="/shoes/shoe7.png">      </div>
-            <div class="product" onclick="showProductImage('/shoes/shoe8.png')">       <img src="/shoes/shoe8.png">      </div>
-          
+        <div class="product-list"> 
+                     <div class="product" onclick="showProductImage('/shoes/shoe3.png')">       <img src="/shoes/shoe3.png" >     </div>
+                     <div class="product" onclick="showProductImage('/shoes/shoe4.png')">       <img src="/shoes/shoe4.png">      </div> 
+                     <div class="product" onclick="showProductImage('/shoes/shoe6.png')">       <img src="/shoes/shoe6.png">      </div>
+                     <div class="product" onclick="showProductImage('/shoes/shoe7.png')">       <img src="/shoes/shoe7.png">      </div>
+                     <div class="product" onclick="showProductImage('/shoes/shoe8.png')">       <img src="/shoes/shoe8.png">      </div> 
         </div>
     </div>
 
@@ -341,49 +158,47 @@
         let products = "";
         if (category === "Shoes") {
             products = `
-                        <div class="product" onclick="showProductImage('/shoes/shoe3.png')">                   <img src="/shoes/shoe3.png">      </div>
-                                <div class="product" onclick="showProductImage('/shoes/shoe4.png')">       <img src="/shoes/shoe4.png">      </div>
-                                    
-                                    <div class="product" onclick="showProductImage('/shoes/shoe6.png')">       <img src="/shoes/shoe6.png">      </div>
-                                    <div class="product" onclick="showProductImage('/shoes/shoe7.png')">       <img src="/shoes/shoe7.png">      </div>
-                                    <div class="product" onclick="showProductImage('/shoes/shoe8.png')">       <img src="/shoes/shoe8.png">      </div>
-    <!-- Add more products for Giyim category here -->
+                          <div class="product" onclick="showProductImage('/shoes/shoe3.png')">       <img src="/shoes/shoe3.png">      </div>
+                          <div class="product" onclick="showProductImage('/shoes/shoe4.png')">       <img src="/shoes/shoe4.png">      </div>
+                          <div class="product" onclick="showProductImage('/shoes/shoe6.png')">       <img src="/shoes/shoe6.png">      </div>
+                          <div class="product" onclick="showProductImage('/shoes/shoe7.png')">       <img src="/shoes/shoe7.png">      </div>
+                          <div class="product" onclick="showProductImage('/shoes/shoe8.png')">       <img src="/shoes/shoe8.png">      </div>  
         `;
         } else if (category === "Tshirts") {
             products = `
-          <div class="product" onclick="showProductImage('/Tshirts/Tshirt4.png')">  <img src="/Tshirts/Tshirt4.png">   </div>
-          <div class="product" onclick="showProductImage('/Tshirts/Tshirt5.png')">  <img src="/Tshirts/Tshirt5.png">   </div>
-          <div class="product" onclick="showProductImage('/Tshirts/Tshirt6.png')">  <img src="/Tshirts/Tshirt6.png">   </div>
-          <div class="product" onclick="showProductImage('/Tshirts/Tshirt7.png')">  <img src="/Tshirts/Tshirt7.png">   </div>
-          <div class="product" onclick="showProductImage('/Tshirts/Tshirt8.png')">  <img src="/Tshirts/Tshirt8.png">   </div>
+                          <div class="product" onclick="showProductImage('/Tshirts/Tshirt4.png')">  <img src="/Tshirts/Tshirt4.png">   </div>
+                          <div class="product" onclick="showProductImage('/Tshirts/Tshirt5.png')">  <img src="/Tshirts/Tshirt5.png">   </div>
+                          <div class="product" onclick="showProductImage('/Tshirts/Tshirt6.png')">  <img src="/Tshirts/Tshirt6.png">   </div>
+                          <div class="product" onclick="showProductImage('/Tshirts/Tshirt7.png')">  <img src="/Tshirts/Tshirt7.png">   </div>
+                          <div class="product" onclick="showProductImage('/Tshirts/Tshirt8.png')">  <img src="/Tshirts/Tshirt8.png">   </div>
 
 
-            <!-- Add more products for Tools category here -->
+            
                 `;
         }
       else if (category === "Tools") {
         products = `
-                    <div class="product" onclick="showProductImage('/tools/drill1.png')">        <img src="/Tools/drill1.png">        </div>
-                    <div class="product" onclick="showProductImage('/tools/screwdriver1.png')">  <img src="/Tools/screwdriver1.png">  </div>
-                        <div class="product" onclick="showProductImage('/tools/pliers1.png')">  <img src="/Tools/pliers1.png">  </div>
-        <!-- Add more products for Tools category here -->
+                         <div class="product" onclick="showProductImage('/tools/drill1.png')">        <img src="/Tools/drill1.png">        </div>
+                         <div class="product" onclick="showProductImage('/tools/screwdriver1.png')">  <img src="/Tools/screwdriver1.png">  </div>
+                         <div class="product" onclick="showProductImage('/tools/pliers1.png')">       <img src="/Tools/pliers1.png">       </div>
+      
             `;
     }
     else if (category === "HG") {
         products = `
-                    <div class="product" onclick="showProductImage('/hg/chair1.png')">  <img src="/hg/chair1.png">        </div>
-                                <div class="product" onclick="showProductImage('/hg/sofa2.png')">  <img src="/hg/sofa2.png">        </div>
-                            <div class="product" onclick="showProductImage('/hg/washingmachine1.png')">  <img src="/hg/washingmachine1.png">        </div>
-        <!-- Add more products for Tools category here -->
+                         <div class="product" onclick="showProductImage('/hg/chair1.png')">           <img src="/hg/chair1.png">                 </div>
+                         <div class="product" onclick="showProductImage('/hg/sofa2.png')">            <img src="/hg/sofa2.png">                  </div>
+                         <div class="product" onclick="showProductImage('/hg/washingmachine1.png')">  <img src="/hg/washingmachine1.png">        </div>
+       
             `;
     }
     else if (category === "Computer") {
         products = `
-                <div class="product" onclick="showProductImage('/Monitors/Monitor1.png')">             <img src="/Monitors/Monitor1.png">        </div>
-               <div class="product" onclick="showProductImage('/Monitors/Monitor2.png')">          <img src="/Monitors/Monitor2.png">        </div>
-                <div class="product" onclick="showProductImage('/Keyboards/Keyboard1.png')">         <img src="/Keyboards/Keyboard1.png">        </div>
-                <div class="product" onclick="showProductImage('/Mouse/Mouse2.png')">         <img src="/Mouse/Mouse2.png">        </div>
-        <!-- Add more products for Tools category here -->
+                         <div class="product" onclick="showProductImage('/Monitors/Monitor1.png')">         <img src="/Monitors/Monitor1.png">        </div>
+                         <div class="product" onclick="showProductImage('/Monitors/Monitor2.png')">         <img src="/Monitors/Monitor2.png">        </div>
+                         <div class="product" onclick="showProductImage('/Keyboards/Keyboard1.png')">       <img src="/Keyboards/Keyboard1.png">      </div>
+                         <div class="product" onclick="showProductImage('/Mouse/Mouse2.png')">              <img src="/Mouse/Mouse2.png">             </div>
+       
             `;
     }
 
