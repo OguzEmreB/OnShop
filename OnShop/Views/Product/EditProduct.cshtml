@@ -13,14 +13,10 @@
         </div>
     </div>
 <div class="container">
-        <h1 style="background-color: #0f161e; color: #fff; margin-top:65px;">Edit Product</h1>
-
+        <h1 style="background-color: #0f161e; color: #fff;  ">Edit Product</h1> 
 
         <form asp-action="EditProduct" method="post" onsubmit="return validateDescriptionLength()">
-        <input type="hidden" asp-for="ProductId" />
-
-       
-
+        <input type="hidden" asp-for="ProductId" /> 
         <div class="form-group">
             <label asp-for="ProductName">Product Name</label>
             <input asp-for="ProductName" class="form-control" />
@@ -44,17 +40,14 @@
             <label asp-for="ImageUrl">Image Url</label>
             <input asp-for="ImageUrl" class="form-control" />
         </div>
-
-        
+         
         <input type="hidden" asp-for="CategoryName" />
         <input type="hidden" asp-for="CategoryId" />
-        <input type="hidden" asp-for="UserProductId" />
-
+        <input type="hidden" asp-for="UserProductId" /> 
         <input type="hidden" asp-for="ApplicationUser.Id" />
         <input type="hidden" asp-for="ApplicationUser.FirstName" />
         <input type="hidden" asp-for="ApplicationUser.LastName" />
-     
-
+      
         <button type="submit" class="btn btn-primary">Update Product</button>
     </form>
 </div>

@@ -3,8 +3,7 @@
     ViewData["Title"] = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
-
+  
 <style>
     td.remove-btn {
      
@@ -17,11 +16,9 @@
     <div class="col-md-3">
         <div class="list-group position-sticky" style="margin-top: 65px;">
             <a href="/Product/Profile" class="list-group-item active">Your Cart</a>
-            <a href="/Product/YourProducts" class="list-group-item">Your Products</a>
-          
+            <a href="/Product/YourProducts" class="list-group-item">Your Products</a> 
         </div>
-    </div>
-
+    </div> 
 
     <div class="col-md-9"> 
         <h1 style="background-color: #0f161e; color: #fff; margin-top:65px;">Your Cart</h1>
@@ -67,11 +64,8 @@
                                     <form asp-controller="ShoppingCart" asp-action="RemoveFromCart" method="post"  >
                                         <input type="hidden" name="productId" value="@item.ProductId" />
                                         <button type="submit" formaction="/ShoppingCart/RemoveFromCart" formmethod="post" class="btn btn-danger align-middle">Remove</button>
-                                    </form>
-
-                                     
-                                </td>
-                              
+                                    </form>   
+                                </td> 
                             </tr>
                         }
                     </tbody>
