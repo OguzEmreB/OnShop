@@ -88,11 +88,14 @@
             width: 100%;  
             text-align: center;  
             list-style: none;
-            padding: 0;
-            
+            padding: 0;  
+        }
 
-            
-        } 
+   .header li.selected-category {
+       font-size:20px;
+            color: #1c2937; /* Seçilen kategorinin arka plan rengini burada değiştirebilirsiniz */
+    }
+
     .product-list {
         display: flex;
         gap: 30px;
@@ -124,19 +127,19 @@
         <div class="header">
             <nav>
                 <ul> 
-                    <li onclick="changeCategory('Shoes')">Shoes</li>
-                    <li onclick="changeCategory('Tshirts')">Tshirts</li>
-                    <li onclick="changeCategory('Computer')">Computer</li>
-                    <li onclick="changeCategory('HG')">Home&garden</li>
-                    <li onclick="changeCategory('Tools')">Tools</li> 
+                    <li id="Shoes" onclick="changeCategory('Shoes')">Shoes</li>
+                    <li id="Tshirts" onclick="changeCategory('Tshirts')">Tshirts</li>
+                    <li id="Computer" onclick="changeCategory('Computer')">Computer</li>
+                    <li id="HomeGarden" onclick="changeCategory('HomeGarden')">Home&garden</li>
+                    <li id="Tools" onclick="changeCategory('Tools')">Tools</li>
                 </ul>
             </nav>
         </div>
         <div class="image-display">
             <img id="displayed-image" src="" alt="Product Photo">
         </div>
-        <div class="product-list"> 
-                     <div class="product" onclick="showProductImage('/shoes/shoe3.png')">       <img src="/shoes/shoe3.png" >     </div>
+        <div class="product-list">
+                     <div class="product" onclick="showProductImage('/shoes/shoe3.png')">       <img src="/shoes/shoe3.png">     </div>
                      <div class="product" onclick="showProductImage('/shoes/shoe4.png')">       <img src="/shoes/shoe4.png">      </div> 
                      <div class="product" onclick="showProductImage('/shoes/shoe6.png')">       <img src="/shoes/shoe6.png">      </div>
                      <div class="product" onclick="showProductImage('/shoes/shoe7.png')">       <img src="/shoes/shoe7.png">      </div>
@@ -145,9 +148,7 @@
     </div>
 
 </div>
-
-
-
+ 
 <script>
 
     window.onload = function () {
@@ -156,30 +157,44 @@
     };
 
     function changeCategory(category) {
-      
+
+        const liElements = document.querySelectorAll(".header li");
+        liElements.forEach((li) => li.classList.remove("selected-category")); 
+         
         const productContainer = document.querySelector(".product-list");
         let products = "";
+
         if (category === "Shoes") {
+
+
+            const selectedLiElement = document.querySelector(`.header li[id="Shoes"]`);
+            selectedLiElement.classList.add("selected-category");
+
             products = `
-                          <div class="product" onclick="showProductImage('/shoes/shoe3.png')">       <img src="/shoes/shoe3.png">      </div>
-                          <div class="product" onclick="showProductImage('/shoes/shoe4.png')">       <img src="/shoes/shoe4.png">      </div>
-                          <div class="product" onclick="showProductImage('/shoes/shoe6.png')">       <img src="/shoes/shoe6.png">      </div>
-                          <div class="product" onclick="showProductImage('/shoes/shoe7.png')">       <img src="/shoes/shoe7.png">      </div>
-                          <div class="product" onclick="showProductImage('/shoes/shoe8.png')">       <img src="/shoes/shoe8.png">      </div>  
-        `;
+                              <div class="product"  onclick="showProductImage('/shoes/shoe3.png')">       <img src="/shoes/shoe3.png">      </div>
+                              <div class="product"  onclick="showProductImage('/shoes/shoe4.png')">       <img src="/shoes/shoe4.png">      </div>
+                              <div class="product"  onclick="showProductImage('/shoes/shoe6.png')">       <img src="/shoes/shoe6.png">      </div>
+                              <div class="product"  onclick="showProductImage('/shoes/shoe7.png')">       <img src="/shoes/shoe7.png">      </div>
+                              <div class="product"  onclick="showProductImage('/shoes/shoe8.png')">       <img src="/shoes/shoe8.png">      </div>
+            `;
         } else if (category === "Tshirts") {
+
+            const selectedLiElement = document.querySelector(`.header li[id="Tshirts"]`);
+            selectedLiElement.classList.add("selected-category");
+
             products = `
                           <div class="product" onclick="showProductImage('/Tshirts/Tshirt4.png')">  <img src="/Tshirts/Tshirt4.png">   </div>
                           <div class="product" onclick="showProductImage('/Tshirts/Tshirt5.png')">  <img src="/Tshirts/Tshirt5.png">   </div>
                           <div class="product" onclick="showProductImage('/Tshirts/Tshirt6.png')">  <img src="/Tshirts/Tshirt6.png">   </div>
                           <div class="product" onclick="showProductImage('/Tshirts/Tshirt7.png')">  <img src="/Tshirts/Tshirt7.png">   </div>
-                          <div class="product" onclick="showProductImage('/Tshirts/Tshirt8.png')">  <img src="/Tshirts/Tshirt8.png">   </div>
-
-
-            
+                          <div class="product" onclick="showProductImage('/Tshirts/Tshirt8.png')">  <img src="/Tshirts/Tshirt8.png">   </div> 
                 `;
         }
       else if (category === "Tools") {
+
+            const selectedLiElement = document.querySelector(`.header li[id="Tools"]`);
+            selectedLiElement.classList.add("selected-category"); 
+
         products = `
                          <div class="product" onclick="showProductImage('/tools/drill1.png')">        <img src="/Tools/drill1.png">        </div>
                          <div class="product" onclick="showProductImage('/tools/screwdriver1.png')">  <img src="/Tools/screwdriver1.png">  </div>
@@ -187,7 +202,11 @@
       
             `;
     }
-    else if (category === "HG") {
+        else if (category === "HomeGarden") {
+
+            const selectedLiElement = document.querySelector(`.header li[id="HomeGarden"]`);
+            selectedLiElement.classList.add("selected-category");
+
         products = `
                          <div class="product" onclick="showProductImage('/hg/chair1.png')">           <img src="/hg/chair1.png">                 </div>
                          <div class="product" onclick="showProductImage('/hg/sofa2.png')">            <img src="/hg/sofa2.png">                  </div>
@@ -196,6 +215,10 @@
             `;
     }
     else if (category === "Computer") {
+
+            const selectedLiElement = document.querySelector(`.header li[id="Computer"]`);
+            selectedLiElement.classList.add("selected-category");
+
         products = `
                          <div class="product" onclick="showProductImage('/Monitors/Monitor1.png')">         <img src="/Monitors/Monitor1.png">        </div>
                          <div class="product" onclick="showProductImage('/Monitors/Monitor2.png')">         <img src="/Monitors/Monitor2.png">        </div>
@@ -203,9 +226,8 @@
                          <div class="product" onclick="showProductImage('/Mouse/Mouse2.png')">              <img src="/Mouse/Mouse2.png">             </div>
        
             `;
-    }
-
-    productContainer.innerHTML = products;
+    } 
+        productContainer.innerHTML = products;
     }
 
     function showProductImage(src) {
