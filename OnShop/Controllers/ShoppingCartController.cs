@@ -18,28 +18,22 @@ public class ShoppingCartController : BaseController
 {
     private readonly UserManager<ApplicationUser> _userManager;  //
     private readonly OnShopDBContext _dbContext;               //
-   
     
-
-
     public ShoppingCartController(OnShopDBContext dbContext,  UserManager<ApplicationUser> userManager)
         : base(dbContext, userManager)
-    {
-        
-        
+    {    
         _userManager = userManager;
         _dbContext = dbContext;
     }
-   
-  
+    
     [Authorize]
     [HttpPost]
     public IActionResult RemoveFromCart(int productId)
     {
-   PopulateCartProductData();
+         PopulateCartProductData();
 
-        var userId = _userManager.GetUserId(User);
-        var user = _userManager.FindByIdAsync(userId).Result;
+         var userId = _userManager.GetUserId(User);
+         var user = _userManager.FindByIdAsync(userId).Result;
 
         if (user != null && user.ShoppingCart != null)
         {
@@ -50,16 +44,12 @@ public class ShoppingCartController : BaseController
                 user.ShoppingCart.Remove(productToRemove);
                 _userManager.UpdateAsync(user).Wait();
             }
-        }
-
-        string referringUrl = Request.Headers["Referer"].ToString();
-        
+        } 
+        string referringUrl = Request.Headers["Referer"].ToString(); 
         return Redirect(referringUrl);
     }
-     
-   
-    [HttpPost]
-  
+      
+    [HttpPost] 
     public IActionResult AddToCart(int productId, int quantity)
     {
         if (!User.Identity.IsAuthenticated)   
@@ -70,16 +60,14 @@ public class ShoppingCartController : BaseController
 
         var userId = _userManager.GetUserId(User);
         var user = _userManager.FindByIdAsync(userId).Result;
-
-       
+         
         if (user.ShoppingCart == null)
         {
             user.ShoppingCart = new List<ShoppingCart>();
         } 
    
         var productToAdd = _dbContext.Products.FirstOrDefault(p => p.ProductId == productId);
-
-        
+         
         if (productToAdd != null && !user.ShoppingCart.Any(item => item.ProductId == productToAdd.ProductId))
         { 
             var shoppingCartItem = new ShoppingCart
@@ -95,43 +83,32 @@ public class ShoppingCartController : BaseController
             user.ShoppingCart.Add(shoppingCartItem);
         } 
     
-        _userManager.UpdateAsync(user).Wait();
-
-       
+        _userManager.UpdateAsync(user).Wait(); 
         string referringUrl = Request.Headers["Referer"].ToString();
        
         return Redirect(referringUrl);
-    }
-
+    } 
 
     [Authorize]
-    [HttpPost]
-
+    [HttpPost] 
     public IActionResult ClearCart()
     {
         var userId = _userManager.GetUserId(User);
         var user = _userManager.FindByIdAsync(userId).Result;
 
         if (user != null)
-        {
-
+        { 
             var userCartItems = _dbContext.ShoppingCarts.Where(cart => cart.ApplicationUser.Id == userId);
             _dbContext.ShoppingCarts.RemoveRange(userCartItems);
             _dbContext.SaveChanges();
-
-
+             
             user.ShoppingCart.Clear();
-
-
+             
             _userManager.UpdateAsync(user).Wait();
-        }
-
-        string referringUrl = Request.Headers["Referer"].ToString();
-
+        } 
+        string referringUrl = Request.Headers["Referer"].ToString(); 
         return Redirect(referringUrl);
-    }
-   
-
+    } 
 }
 
 

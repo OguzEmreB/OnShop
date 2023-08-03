@@ -22,11 +22,7 @@ namespace OnShop.Controllers
             _dbContext = dbContext;
             _userManager = userManager;
           
-        }
-
-    
-
-
+        } 
         protected List<ShoppingCart> GetCartProducts()
         {
             UpdateCart();
@@ -34,9 +30,7 @@ namespace OnShop.Controllers
             var userId = _userManager.GetUserId(User);
             var user = _userManager.Users
             .Include(u => u.ShoppingCart) 
-        .FirstOrDefault(u => u.Id == userId);
-
-
+            .FirstOrDefault(u => u.Id == userId); 
 
             if (user == null)
             {
@@ -64,8 +58,7 @@ namespace OnShop.Controllers
 
         protected void PopulateCartProductData()
         {
-            List<ShoppingCart> cartProducts = GetCartProducts();
-
+            List<ShoppingCart> cartProducts = GetCartProducts(); 
             var cartProductIds = new List<int>();
             var cartProductNames = new List<string>();
             var cartProductQuantities = new List<int>();
@@ -103,8 +96,7 @@ namespace OnShop.Controllers
             if (user == null)
             {
                 return;
-            }
-
+            } 
             var productsInCart = user.ShoppingCart.ToList();
 
             foreach (var cartProduct in productsInCart)

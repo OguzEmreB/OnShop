@@ -99,8 +99,7 @@ namespace OnShop.Controllers
            
         }
         public List<UserProducts> GetUserProducts()
-        {
-
+        { 
             var userId = _userManager.GetUserId(User);
             var user = _userManager.FindByIdAsync(userId).Result;
 
@@ -113,21 +112,14 @@ namespace OnShop.Controllers
                 .Where(user => user.UserId == userId)
                 .ToList();
 
-            return userProducts;
- 
-        }
-
-
-    
+            return userProducts; 
+        } 
 
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-          
+        [ValidateAntiForgeryToken] 
         public IActionResult RemoveProduct(int productId)
-        {
-
-
+        { 
             PopulateUserProductData();
             var userId = _userManager.GetUserId(User);
             var user = _userManager.FindByIdAsync(userId).Result;
@@ -141,10 +133,9 @@ namespace OnShop.Controllers
                 {
                      
                     _dbContext.UserProducts.Remove(productToRemove);
-                    _dbContext.SaveChanges();
-
-                    
+                    _dbContext.SaveChanges(); 
                     var productFromProductsTable = _dbContext.Products.FirstOrDefault(p => p.ProductId == productId);
+
                     if (productFromProductsTable != null)
                     {
                         _dbContext.Products.Remove(productFromProductsTable);
@@ -156,8 +147,7 @@ namespace OnShop.Controllers
                   
                     return NotFound();
                 }
-            }
-
+            } 
             string referringUrl = Request.Headers["Referer"].ToString();
             return Redirect(referringUrl);
         }
@@ -214,9 +204,7 @@ namespace OnShop.Controllers
                     CategoryName = categoryName,
                     ImageUrl = viewModel.ImageUrl
                 };
-               
-              
-
+                
                 var userProduct = new UserProducts
                 {
                     
@@ -233,8 +221,7 @@ namespace OnShop.Controllers
                
                 _dbContext.UserProducts.Add(userProduct);
                 _dbContext.SaveChanges();
-
-               
+                 
                 product.UserProductId = userProduct.UserProductId;
                
                 _dbContext.Products.Add(product);
@@ -252,15 +239,13 @@ namespace OnShop.Controllers
 
             return View();
         }
-        [HttpGet]
-       
+
+        [HttpGet] 
         public IActionResult EditProduct(int ProductId)
         {
             PopulateCartProductData();
             var userId = _userManager.GetUserId(User);
-            var user = _userManager.FindByIdAsync(userId).Result;
-    
-
+            var user = _userManager.FindByIdAsync(userId).Result; 
             var productToEdit = _dbContext.UserProducts.FirstOrDefault(p => p.ProductId == ProductId);
 
             productToEdit.ApplicationUser = user;
@@ -268,16 +253,10 @@ namespace OnShop.Controllers
             if (productToEdit == null)
             {
                 return NotFound();
-            }
-
-          
+            } 
             return View("EditProduct", productToEdit);
-        }
-
-
-
-
-
+        } 
+         
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EditProduct([Bind("UserProductId, ProductName,ProductId, Price, Description, Quantity, CategoryName, CategoryId, ImageUrl,ApplicationUser")] UserProducts productToEdit)
@@ -289,12 +268,9 @@ namespace OnShop.Controllers
             var product = _dbContext.Products.FirstOrDefault(up => up.UserProductId == productToEdit.UserProductId && up.UserId == userId);
 
             if (ModelState.IsValid)
-            {
-                
-               
+            { 
                 if (userProduct != null)
-                {
-                  
+                { 
                    userProduct.ProductId = product.ProductId;
                     product.ProductName = userProduct.ProductName = productToEdit.ProductName;
                     product.Price = userProduct.Price = productToEdit.Price;
@@ -304,19 +280,12 @@ namespace OnShop.Controllers
                     product.ImageUrl = userProduct.ImageUrl = productToEdit.ImageUrl;
                     product.UserProductId = productToEdit.UserProductId;
 
-                    UpdateCart( );
-
-                 
+                    UpdateCart( ); 
                     _dbContext.SaveChanges();
-                }
-
+                } 
                 return RedirectToAction("YourProducts");
-            }
-
+            } 
             return View(productToEdit);
-        }
-
-
-
+        } 
     }
 }
