@@ -29,189 +29,98 @@ namespace OnShop.Controllers
 
             return View();
         }
-        public IActionResult Shoes()
-        {
 
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 1).ToList();
-
-            return View();
-        }
-        public IActionResult Tshirts()
+        public IActionResult Products(string category)
         {
 
             PopulateCartProductData();
 
+            if (category == "Shoes")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 1).ToList();
+               
+            }
+            else if (category == "Tshirts")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 2).ToList();
+           
+            }
+            else if (category == "Monitors")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 3).ToList();
+            }
+            else if (category == "Keyboards")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 4).ToList();
+            }
+            else if (category == "Mouse")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 5).ToList();
+            }
+            else if (category == "Chairs")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 6).ToList();
+            }
+            else if (category == "Sofas")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 7).ToList();
+            }
+            else if (category == "WhiteGoods")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 8).ToList();
+            }
+            else if (category == "Pliers")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 9).ToList();
+            }
+            else if (category == "Screwdrivers")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 10).ToList();
+            }
+            else if (category == "Drills")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 11).ToList();
+            }
+            else if (category == "Hairbands")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 12).ToList();
+            }
+            else if (category == "Sunglasses")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 13).ToList();
+            }
+            else if (category == "Wallets")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 14).ToList();
+            }
+            else if (category == "Computer")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 3 || x.CategoryId == 4 || x.CategoryId == 5).ToList();
+            }
+            else if (category == "Clothing-Shoes")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 1 || x.CategoryId == 2).ToList();
+            }
+            else if (category == "Home-Garden")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 6 || x.CategoryId == 7 || x.CategoryId == 8).ToList();
+            }
+            else if (category == "Accessories")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 12 || x.CategoryId == 13 || x.CategoryId == 14).ToList();
+            }
+            else if (category == "Tools")
+            {
+                ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 9 || x.CategoryId == 10 || x.CategoryId == 11).ToList();
+            }
 
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 2).ToList();
-
+            ViewBag.Title = category;
             return View();
         }
-        public IActionResult Monitors()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 3).ToList();
-
-            return View();
-        }
-        public IActionResult Keyboards()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 4).ToList();
-
-            return View();
-        }
-        public IActionResult Mouse()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 5).ToList();
-
-            return View();
-        }
-        public IActionResult Computer()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 3 || x.CategoryId == 4 || x.CategoryId == 5).ToList();
-
-            return View();
-        }
-        public IActionResult ClothingShoes()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 1 || x.CategoryId == 2).ToList();
-
-            return View();
-        }
-        public IActionResult Chairs()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 6 ).ToList();
-
-            return View();
-        }
-        public IActionResult Sofas()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 7).ToList();
-
-            return View();
-        }
-        public IActionResult WhiteGoods()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 8).ToList();
-
-            return View();
-        }
-        public IActionResult Hairbands()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 12).ToList();
-
-            return View();
-        }
-        public IActionResult Sunglasses()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 13).ToList();
-
-            return View();
-        }
-        public IActionResult Wallets()
-        {
-
-
-            PopulateCartProductData();
-
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 14).ToList();
-
-            return View();
-        }
-        public IActionResult HomeGarden()
-        {
-            PopulateCartProductData();
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 6 || x.CategoryId == 7 || x.CategoryId == 8).ToList();
-            return View();
-        }
-        public IActionResult Accessories()
-        {
-            PopulateCartProductData();
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 12 || x.CategoryId == 13 || x.CategoryId == 14).ToList();
-
-            return View();
-        }
-        public IActionResult Tools()
-        {
-            PopulateCartProductData();
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 9 || x.CategoryId == 10 || x.CategoryId == 11).ToList();
-            return View();
-        }
-        public IActionResult Pliers()
-        {
-            PopulateCartProductData();
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 9).ToList();
-            return View();
-        }
-        public IActionResult Screwdrivers()
-        {
-            PopulateCartProductData();
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 10).ToList();
-            return View();
-        }
-        public IActionResult Drills()
-        {
-            PopulateCartProductData();
-
-            ViewBag.Products = _dbContext.Products.Where(x => x.CategoryId == 11).ToList();
-            return View();
-        }
+      
+   
+       
+    
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

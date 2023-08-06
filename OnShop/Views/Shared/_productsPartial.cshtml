@@ -1,7 +1,9 @@
 ﻿
 <script>
-    document.title = 'OnShop - @ViewData["Title"]';
+    document.title = 'OnShop - @(ViewBag.Title)';
 </script>
+
+
 <style>
     .product-grid {
         display: flex;
@@ -46,7 +48,7 @@
             <img class="product-image" src="@product.ImageUrl" alt="@product.ProductName" />
 
             <div class="product-details">
-                <h4>@product.ProductName</h4>
+                <h4>@product.ProductName</h4> 
                 <p>Stock: @product.Quantity</p>
                 <p>Price: @string.Format("{0:0.0}", @product.Price) $</p>
                 <p>Description: @product.Description</p>
@@ -69,3 +71,18 @@
         </div>
     }
 </div>
+
+
+
+    <script>
+        function updateQuantity(productId, value) {
+            const input = document.querySelector(`input[id="${productId}"]`);
+            const updatedQuantity = parseInt(input.value) + value;
+            if (updatedQuantity >= 1 && updatedQuantity <= parseInt(input.getAttribute('max'))) {
+                input.value = updatedQuantity;
+                const hiddenInput = document.getElementById(`quantity_${productId}`);
+                hiddenInput.value = updatedQuantity;
+            }
+        }
+    </script>
+

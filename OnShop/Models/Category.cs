@@ -15,3 +15,4 @@ public partial class Category
 
     public int? Quantity { get; set; }
 }
+  

@@ -35,73 +35,63 @@
                 <div class="user-container">
                     <ul class="user-tabs"> 
                         <li>
-                            <a asp-controller="Product" asp-action="Profile">Profile</a>
-
-
+                            <a asp-controller="Product" asp-action="Profile">Profile</a>  
                         </li>
                       
                         <li>
-                            <a asp-controller="Product" asp-action="Profile">Contact Us</a>
-
-
+                            <a asp-controller="Product" asp-action="Profile">Contact Us</a> 
                         </li>
                        
                     </ul>
-                </div>
-
-
+                </div> 
             </div>
 
-            <div class="login">
-          
+            <div class="login"> 
                 <partial name="_LoginPartial.cshtml" />
             </div>
         </div>
+
         <div class="menu">
             <div class="orta-2">
 
                 <ul class="ortaMenu">
                     <li class="dropdown">
-                        <a href="/Home/ClothingShoes">Clothing & Shoes</a>
+                        <a href="/Home/Products?Category=Clothing-Shoes">Clothing & Shoes</a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Home/Shoes">Shoes</a></li>
-                            <li><a href="/Home/Tshirts">Tshirts</a></li>
+                            <li><a href="/Home/Products?Category=Shoes">Shoes</a></li>
+                            <li><a href="/Home/Products?Category=Tshirts">Tshirts</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="/Home/Computer">Computer</a>
+                        <a href="/Home/Products?Category=Computer">Computer</a> 
                         <ul class="dropdown-menu">
-                            <li><a href="/Home/Monitors">Monitors</a></li>
-                            <li><a href="/Home/Keyboards">Keyboards</a></li>
-                            <li><a href="/Home/Mouse">Mouse</a></li>
+                            <li><a href="/Home/Products?Category=Monitors">Monitors</a></li>
+                            <li><a href="/Home/Products?Category=Keyboards">Keyboards</a></li>
+                            <li><a href="/Home/Products?Category=Mouse">Mouse</a></li> 
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="/Home/HomeGarden">Home & Garden</a>
+                        <a href="/Home/Products?Category=Home-Garden">Home & Garden</a> 
                         <ul class="dropdown-menu">
-                            <li><a href="/Home/Chairs">Chairs</a></li>
-                            <li><a href="/Home/Sofas">Sofas</a></li>
-                            <li><a href="/Home/WhiteGoods">WhiteGoods</a></li>
-                            
+                            <li><a href="/Home/Products?Category=Chairs">Chairs</a></li>
+                            <li><a href="/Home/Products?Category=Sofas">Sofas</a></li>
+                            <li><a href="/Home/Products?Category=WhiteGoods">WhiteGoods</a></li> 
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="/Home/Accessories">Accessories</a>
+                        <a href="/Home/Products?Category=Accessories">Accessories</a> 
                         <ul class="dropdown-menu">
-                            <li><a href="/Home/Wallets">Wallets</a></li>
-                            <li><a href="/Home/Sunglasses">Sunglasses</a></li>
-                            <li><a href="/Home/Hairbands">Hairbands</a></li>
-                           
-                            
+                            <li><a href="/Home/Products?Category=Wallets">Wallets</a></li>
+                            <li><a href="/Home/Products?Category=Sunglasses">Sunglasses</a></li>
+                            <li><a href="/Home/Products?Category=Hairbands">Hairbands</a></li> 
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="/Home/Tools">Tools</a>
+                        <a href="/Home/Products?Category=Tools">Tools</a> 
                         <ul class="dropdown-menu">
-                            <li><a href="/Home/Pliers">Pliers</a></li>
-                            <li><a href="/Home/Screwdrivers">Screwdrivers</a></li>
-                            <li><a href="/Home/Drills">Drills</a></li>
-                     
+                            <li><a href="/Home/Products?Category=Pliers">Pliers</a></li>
+                            <li><a href="/Home/Products?Category=Screwdrivers">Screwdrivers</a></li>
+                            <li><a href="/Home/Products?Category=Drills">Drills</a></li> 
                         </ul>
                     </li>
                 </ul>
